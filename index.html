@@ -2,7 +2,7 @@
 <html>
 	<head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"> /追加
+        <meta name="viewport" content="width=device-width, initial-scale=1"> //追加
 	<title>Insert title here</title>
 	
 	<link rel="stylesheet"href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
@@ -161,8 +161,6 @@
 			           
 			        // 認証エラーをポップアップで表示する。
                        alert,
-			        // アースエンジンのデータの読み取りと計算のみを代行する権限を要求する。
-			        //   user
 			        /* extraScopes = */ ['https://www.googleapis.com/auth/cloud-platform'],
 			        // 既存の認証情報の再利用に失敗した場合、サインインボタンを表示します。
 			        () => document.getElementById("g-sign-in").removeAttribute("hidden"),
@@ -180,7 +178,7 @@
 			      
 			        // マップを含むプレースホルダ DOM 要素への参照を取得します。
 			       const mapContainerEl = document.getElementById("map-container");
-			      }
+			      
 			      
 			
 					
