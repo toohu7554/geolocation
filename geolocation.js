@@ -9,10 +9,7 @@
  * 「コールバック関数」
  * PositionCallback　　 -->位置情報の取得が成功したときに呼び出される(引数:Positionオブジェクト)
  * PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト)
- * 
- * 
  */
-
 		navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //現在位置を取得
 		
 			function successCallback(position){   //成功した場合
@@ -24,12 +21,8 @@
 				document.getElementById("latitude").innerHTML = latitude;
 				document.getElementById("longitude").innerHTML = longitude;
 				document.getElementById("altitude").innerHTML = altitude;
-	};
-	
-	
-	
-	//--------------------------------------------------------------------------
-	
-	        function errorCallback(error){
-				alert("位置情報が取得できませんでした");
-    };
+	                                                  };	
+/*------------------------------------------------------------------------------------------------------------------------*/
+	               function errorCallback(error){
+				  alert("位置情報が取得できませんでした");
+                                            };
