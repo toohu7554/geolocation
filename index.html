@@ -1,39 +1,168 @@
 <!DOCTYPE html>
 <html lang="ja">
+    
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/> //変更あり
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sample Site</title>
+    <title>Insert title here</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-    </style>
-</head>
-<body>
-<header>
-    <nav class="navbar bg-body-tertiary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Sample Site</a>
-        </div>
-    </nav>
-</header>
-<main>
-    <div class="container mt-5 py-5">
-        <div class="p-4 rounded bg-body-secondary">
-            <h1 class="display-5 fst-italic">Welcome to Sample Site</h1>
-            <p class="lead mt-5">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
-            <p class="lead">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
-            <p class="lead"><a href="about.html">さらに詳しく</a></p>        
-        </div>
-        <div class="row my-5">
-            <h2>Contact</h2>
-            <p>お問い合わせは <a href="#">sample@sample.com</a> にお送りください。</p>
-        </div>
-    </div>
-</main>
-<footer class="py-3 fixed-bottom bg-body-tertiary">
-  <div class="text-center">
-    <span class="text-body-secondary">© Sample Site</span>
-  </div>
-</footer>
-</body>
+    //origin
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+	<script type="text/javascript" src="P:\総合制作実習2025\yamada\re_\leafret.js"></script> //変更必要?
+
+        <style> //--------------------------------------------------------------------------------
+            *{ margin:0; padding:0; }
+    				            
+    			main{ background:rgb(240, 255, 255); }
+    				            
+    			/* マップを含む div 要素のサイズを設定します。 */
+    			#map-container { height: 400px; width: 100%; background-color: #eee; }
+            
+    			#canvas        { background:rgb(250,255,250);}    
+        </style>//----------------------------------------------------------------------------------    
+    
+        <script type="text/javascript" src="P:\総合制作実習2025\yamada\re_\leafret.js"></script> //ここが適当?
+
+</head>    
+        <body>
+              <h1>JavaScript練習中</h1>
+			  <h2>DownLoad</h2>
+
+              <button type="button" onclick="ShowAlert()">ここをクリック</button>
+              <button type="image" onclick="onSignInButtonClick()">ここをクリック</button>            
+              <body onload="init()">
+                  
+                  <div> //----------------------------------------------------------
+  					<div id="mapcontainer" style="width:600px;height:600px"></div>
+                    <div id="map_canvas1" style="width:300px; height:300px"></div>
+                    <div class="txt-margin">
+		            <p>緯度：<span id="latitude">???</span><span>度</span></p>
+		            <p>経度：<span id="longitude">???</span><span>度</span></p>
+		            <p>高度：<span id="altitude">???</span><span>度</span></p>
+		          </div> //---------------------------------------------------------
+                      
+                <header> //---------------------------------------------------------
+                    <nav class="navbar bg-body-tertiary fixed-top">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="index.html">Sample Site</a>
+                        </div>
+                    </nav>
+                </header> //----------------------------------------------------------
+                      
+                    <main>                                                      
+                            <h1 class="display-5 fst-italic">Welcome to Sample Site</h1>
+                                    <div class="container mt-5 py-5">
+                                    <div class="p-4 rounded bg-body-secondary">
+                                        
+                                <p class="lead mt-5">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
+                                <p class="lead">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
+                                <p class="lead"><a href="about.html">さらに詳しく</a></p>        
+                                   </div>
+                                     <div class="row my-5">
+                            <h2>Contact</h2>
+                               <p>お問い合わせは <a href="#">sample@sample.com</a> にお送りください。</p>
+                                    </div>
+                                  </div>
+                        
+                               <canvas id="canvas" width="200" height="200"> </canvas> 
+		                       <canvas  width=100height=100 style="border: solid 5pt orange"> SOMETHING GOES WRONG</canvas>
+                                   <div id="map-container"></div> <!-- 地図が追加される要素. -->	         		          
+                        
+		                       <p id="temperature"></p>
+		                       <p>アカウントにログインしてください:<span id="map-container">???</span><span>確認用</span></p>
+                    </main>
+                              <script>
+                    					console.log("start");
+                    					console.log("warn");
+                    					
+                    					//---------------------------------------------------------------------------------------------
+                    					 var canvas = document.getElementById('canvas'); 
+                    					 var c = canvas.getContext('2d'); 
+                    					 c.fillStyle = "red"; 
+                    					 c.fillRect(100,100,400,300);                     					 
+                    					const image = document.getElementById("/js/station/om5ru80000003j6y-img/q2k4vk000001680b.png");
+                    					//---------------------------------------------------------------------------------------------
+                    					
+                    					
+                    					
+                    					//---------------------------------------------------------------------------------------------------------
+                    					        const apiUrl = 'https://api.open-meteo.com/v1/forecast?latitude=37.56&longitude=139.19&hourly=temperature_2m&timezone=Asia/Tokyo';
+                    							
+                    					           // 非同期でAPIリクエストを送信し、データを取得でき次第画面に表示
+                    					            fetch(apiUrl)
+                    					              .then(response => {
+                                                          
+                    					                    if (!response.ok) {
+                    					                       // HTTPステータスが200番台以外の場合にエラーをスロー
+                    					                       throw new Error(`HTTP error! status: ${response.status}`);
+                    					                                      }
+                                                          
+                    					                     return response.json(); // JSON形式に変換
+                    					                                      })
+                    					              
+                    					              					              					              					             								 
+                    						           //【ここにAPIレスポンスからのデータ取得処理を実装】								   
+                    								    .then(data => { // データ取得成功時の処理
+                                                     // APIレスポンスの構造を確認し、データが存在するかチェック
+                                                          if (data && data.hourly && data.hourly.temperature_2m && data.hourly.temperature_2m.length > 0) {
+                                                              const latestTemperature = data.hourly.temperature_2m[0];
+                    
+                                                    // HTMLのp要素に気温を出力
+                                                              const temperatureElement = document.getElementById('temperature');
+                                                              temperatureElement.textContent = `現在の気温は${latestTemperature}℃です`; // バッククォートを使用
+                                                              
+                                                                } 
+                                                                 else {                                                              
+                                                                         console.warn('APIレスポンスに予期せぬデータ形式、または気温データが見つかりませんでした。');
+                                                                         const temperatureElement = document.getElementById('temperature');
+                                                                         temperatureElement.textContent = '気温データを取得できませんでした。';
+                                                                      }
+                                                                     })
+                                                        
+                                                         .catch(error => { // エラー発生時の処理
+                                                         console.error('データ取得に失敗しました:', error); // エラー内容をコンソールに出力
+                                                         const temperatureElement = document.getElementById('temperature');
+                                                         temperatureElement.textContent = '気温データの取得中にエラーが発生しました。詳細はコンソールを確認してください。';
+                                                            });                                  
+                            //-----------------------------------------------------------------------------------------------------------------------
+                        
+                    
+                    				   function ShowAlert() {
+                    				   alert("30秒後にシャットダウンします");
+                    				            }
+                    				     
+                    				    function  onSignInButtonClick() {
+                    					alert("Sign in with Google");
+                    					        }                    				    				    					 				 
+                    				    //------------------------------------------------------------------------------------------------------------                    				                        				                       				                    				    
+                    				    // サインインボタンのクリックを処理する。
+                    			          function onSignInButtonClick() {
+                                              
+                    			        // Googleアカウントでログインするためのポップアップを表示する。
+                    			        // アプリに適切なパーミッションを与える。
+                    			         ee.data.authenticateViaPopup(setUpMap);
+                    			           }  //------------------------------------------------------------------------------------------                    			                               			                               			                               				                          			                            				    				    									     				     										 					 					 					 				     
+                    				
+                                  
+                    				     function setUpMap() {
+                    			        // サインインボタンを隠す。
+                    			        document.getElementById("g-sign-in").setAttribute("hidden", "true");
+                    			      
+                    			        // Earth Engine API を初期化します。 APIを使用する前に一度呼び出す必要があります。
+                    			        ee.initialize();
+                    			      
+                    			        // マップを含むプレースホルダ DOM 要素への参照を取得します。
+                    			       const mapContainerEl = document.getElementById("map-container");
+                    			      }                    			                          			                			
+			               </script>
+
+                                        <footer class="py-3 fixed-bottom bg-body-tertiary">
+                                          <div class="text-center">
+                                              <span class="text-body-secondary">© Sample Site</span>
+                                          </div>
+                                        </footer>
+                      
+                      <script type="text/javascript" src="P:\総合制作実習2025\yamada\re_\geolocation.js"></script>		
+        </body>
 </html>
