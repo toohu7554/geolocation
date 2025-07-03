@@ -54,32 +54,28 @@
 			            <body onload="init()">
 					    
 					<div>
-		  					<div id="mapcontainer" style="width:600px;height:600px"></div>
-						        
+		  					<div id="mapcontainer" style="width: 600px; height: 600px; position: relative;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0">						        
+							</div>
 						
 							<div class="txt-margin">
-				            <p>緯度：<span id="latitude">???</span><span>度</span></p>
-				            <p>経度：<span id="longitude">???</span><span>度</span></p>
-				            <p>高度：<span id="altitude">???</span><span>度</span></p>		            
-				        	        </div>	
+								 <p>緯度：<span id="latitude">???</span><span>度</span></p>
+				                                 <p>経度：<span id="longitude">???</span><span>度</span></p>
+				                                 <p>高度：<span id="altitude">???</span><span>度</span></p>
+							</div>
 						
-					      <div id="map_canvas1" style="width:300px; height:300px"></div>
+							<div id="map_canvas1" style="width:300px; height:300px"></div>												           	            				        	        											      
 				       </div>
 				 
-				<main>
+				       <main>
 		           <canvas id="canvas" width="200" height="200"> </canvas>
 		           <canvas  width=100height=100 style="border: solid 5pt orange"> SOMETHING GOES WRONG </canvas>
 		            <div id="map-container"></div> <!-- 地図が追加される要素. -->
 		            		         		          
 		            <p id="temperature"></p>
 		            <p>アカウントにログインしてください:<span id="map-container">???</span><span>確認用</span></p>
-                </main>
-        
-				
-				
-						 
-				
-				<script>
+                                     </main>
+        														 				
+			<script>
 					console.log("start");
 					console.log("warn");
 					
@@ -172,5 +168,5 @@
 			       </script>			      			      								        			      			       			        			     			      			      			    
 					<script type="text/javascript" src="https://github.com/toohu7554/geolocation/blob/main/geolocation.js"></script>   											        			             			      			     																							           
 			               
-		</body>
+	</body>
 </html>
