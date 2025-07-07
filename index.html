@@ -123,30 +123,22 @@
                   console.error('データ取得に失敗しました:', error); // エラー内容をコンソールに出力
                   const temperatureElement = document.getElementById('temperature');
                   temperatureElement.textContent = '気温データの取得中にエラーが発生しました。詳細はコンソールを確認してください。';
-              });
-              
+              });              
         //-----------------------------------------------------------------------------------------------------------------------
-    
-
 				 	    function ShowAlert() {
 				    	alert("30秒後にシャットダウンします");
-				     }
+				          }
 				     
 				        function  onSignInButtonClick() {
 						  alert("Sign in with Google");
-					  }
-				    				    					 				 
-				    //------------------------------------------------------------------------------------------------------------
-				    
-				   
-				    
-				    
-				    // サインインボタンのクリックを処理する。
+					  }				    				    					 				 
+				    //------------------------------------------------------------------------------------------------------------				    				   				    				    
+				           // サインインボタンのクリックを処理する。
 			          function onSignInButtonClick() {
-			        // Googleアカウントでログインするためのポップアップを表示する。
-			        // アプリに適切なパーミッションを与える。
+				        // Googleアカウントでログインするためのポップアップを表示する。
+				        // アプリに適切なパーミッションを与える。
 			         ee.data.authenticateViaPopup(setUpMap);
-			           }  //------------------------------------------------------------------------------------------
+			                          }  //------------------------------------------------------------------------------------------
 
 			        // 認証エラーをポップアップで表示する。
                                    alert,
@@ -164,7 +156,70 @@
 				        // マップを含むプレースホルダ DOM 要素への参照を取得します。
 				       const mapContainerEl = document.getElementById("map-container");
 					 }					     				     										 					 					 					 				
-					
+
+				       function init() {
+					      //地図を表示するdiv要素のidを設定
+					      var map = L.map('mapcontainer',{      //->地図を作成
+							  
+							  renderer: L.canvas()              //マップ内のすべてのパスにデフォルトでCanvasを使用
+						  });
+					                           
+					      
+					      //--------------------------------------------------------------------------------------------
+					      //地図の中心とズームレベルを指定
+					      map.setView([37.9473, 139.32825], 14);     
+					             //->「setView」メソッドで経緯度とズームレベルを指定(緯度、経度、ズームレベル)
+					      
+					      
+					      
+					      //表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
+					      L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+					          attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
+					      }).addTo(map); //
+					    }
+                         //------------------------------------------------------------------------------------------------
+			            			          
+			             function initAnimation(){
+						    var canvas = document.getElementById('canvas');
+						    var ctx = canvas.getContext('2d');
+						
+						    var imagePath = ('./sample.jpg');
+						    var image = new Image();
+						    image.src = imagePath;
+						
+						    canvas.width = Number(window.innerWidth);
+						    canvas.height = Number(canvas.width/2);
+						    image.onload = function(){
+						          ctx.drawImage(image,0,0,image.width,image.height,0,0,canvas.width,canvas.height);
+						    }
+								}
+			            //-----------------------------------------------------------------------------------------------------			            			        
+						  https://qiita.com/orangecarol/items/c84efeca519e2d97bb34
+						  
+						 「*メゾット」
+						  getCurrentPosition() -->デバイスの現在位置を取得する
+						  watchPosition()      -->デバイスの位置情報を監視する
+				
+							 // clearWatch()         -->watchPosition()メソッドで取得中のデバイスの監視状況をクリアする						  
+							 //「コールバック関数」
+							 // PositionCallback　　 -->位置情報の取得が成功したときに呼び出される(引数:Positionオブジェクト)
+							 // PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト)
+							  						  											
+							navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //現在位置を取得
+								
+							function successCallback(position){   //成功した場合									
+								   var latitude = position.coords.latitude;  //現在位置情報(緯度)を持つCoordinatesオブジェクトを取得する
+								   var longitude = position.coords.longitude;//現在位置情報(経度)を持つCoordinatesオブジェクトを取得する				
+								   var longitude = position.coords.altitude; //現在位置情報(高度)を持つCoordinatesオブジェクトを取得する
+										
+									document.getElementById("latitude").innerHTML = latitude;
+									document.getElementById("longitude").innerHTML = longitude;
+									document.getElementById("altitude").innerHTML = altitude;
+							                        };
+																										
+							function errorCallback(error){
+								alert("位置情報が取得できませんでした");
+						                                };
 			       </script>			      			      								        			      			       			        			     			      			      			    
 					<script type="text/javascript" src="https://github.com/toohu7554/geolocation/blob/main/geolocation.js"></script>   											        			             			      			     																							           
 			               
