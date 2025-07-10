@@ -74,21 +74,16 @@
 							        "色別標高図": gsirelief,
 							        "陰影起伏図": gsirehillshademap
 							      };
-								      L.control.layers(baseMaps, overlayMaps).addTo(map);
-								      gsi.addTo(map);
+								             L.control.layers(baseMaps, overlayMaps).addTo(map);
+								             gsi.addTo(map);
+
+							       
+								  //表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
+                                                                   L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+						                   attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
+						                        }).addTo(map); 							       
 								    }
-
-							
-
-
-
-							       
-							       
-						//表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
-						      L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-						          attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
-						      }).addTo(map); 
-						    
+														       							       												      						    
 				            </script>	 
 					
 		  				
