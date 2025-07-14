@@ -119,6 +119,7 @@
 					
 					
 					//---------------------------------------------------------------------------------------------------------
+				                function open_weathe() {
 					        const apiUrl = 'https://api.open-meteo.com/v1/forecast?latitude=37.56&longitude=139.19&hourly=temperature_2m&timezone=Asia/Tokyo';
 							
 					        // 非同期でAPIリクエストを送信し、データを取得でき次第画面に表示
@@ -129,29 +130,28 @@
 					                      throw new Error(`HTTP error! status: ${response.status}`);
 					                  }
 					                  return response.json(); // JSON形式に変換
-					              })
-					              
-					              					              					              					             								 
-						    //【ここにAPIレスポンスからのデータ取得処理を実装】								   
-								    .then(data => { // データ取得成功時の処理
-                  // APIレスポンスの構造を確認し、データが存在するかチェック
-                  if (data && data.hourly && data.hourly.temperature_2m && data.hourly.temperature_2m.length > 0) {
-                      const latestTemperature = data.hourly.temperature_2m[0];
-
-                      // HTMLのp要素に気温を出力
-                      const temperatureElement = document.getElementById('temperature');
-                      temperatureElement.textContent = `現在の気温は${latestTemperature}℃です`; // バッククォートを使用
-                  } else {
-                      console.warn('APIレスポンスに予期せぬデータ形式、または気温データが見つかりませんでした。');
-                      const temperatureElement = document.getElementById('temperature');
-                      temperatureElement.textContent = '気温データを取得できませんでした。';
-                  }
-              })
-              .catch(error => { // エラー発生時の処理
-                  console.error('データ取得に失敗しました:', error); // エラー内容をコンソールに出力
-                  const temperatureElement = document.getElementById('temperature');
-                  temperatureElement.textContent = '気温データの取得中にエラーが発生しました。詳細はコンソールを確認してください。';
-              });              
+					              })					              					              					              					              					             								
+												    //【ここにAPIレスポンスからのデータ取得処理を実装】								   
+														    .then(data => { // データ取得成功時の処理
+						                  // APIレスポンスの構造を確認し、データが存在するかチェック
+						                  if (data && data.hourly && data.hourly.temperature_2m && data.hourly.temperature_2m.length > 0) {
+						                      const latestTemperature = data.hourly.temperature_2m[0];
+						
+						                      // HTMLのp要素に気温を出力
+						                      const temperatureElement = document.getElementById('temperature');
+						                      temperatureElement.textContent = `現在の気温は${latestTemperature}℃です`; // バッククォートを使用
+						                  } else {
+						                      console.warn('APIレスポンスに予期せぬデータ形式、または気温データが見つかりませんでした。');
+						                      const temperatureElement = document.getElementById('temperature');
+						                      temperatureElement.textContent = '気温データを取得できませんでした。';
+						                  }
+						              })
+						              .catch(error => { // エラー発生時の処理
+						                  console.error('データ取得に失敗しました:', error); // エラー内容をコンソールに出力
+						                  const temperatureElement = document.getElementById('temperature');
+						                  temperatureElement.textContent = '気温データの取得中にエラーが発生しました。詳細はコンソールを確認してください。';
+						              }); 
+												}
         //-----------------------------------------------------------------------------------------------------------------------
 				 	    function ShowAlert() {
 				    	alert("30秒後にシャットダウンします");
