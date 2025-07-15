@@ -95,34 +95,7 @@
 						          var lc = L.control.locate(option).addTo(map);                 <!-- 画面表示時に現在地マーカーを表示-->
 						    
 						                      
-						                    var mymap = L.map('mapid').setView([35.7102, 139.8132], 15);
- 
-								      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-								      	maxZoom: 18,
-								      	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
-								      }).addTo(mymap);
-								 
-								      function setCurLocation(){
-								        if (navigator.geolocation == false){
-								           alert('現在地を取得できませんでした。');
-								           return;
-								        }
-								 
-								        function success(e) {
-								          var lat  = e.coords.latitude;
-								          var lng = e.coords.longitude;
-								          mymap.setView([lat, lng], 15);
-								 
-								          var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:'#1199fb'});
-								          L.marker([lat, lng],{icon: pulsingIcon}).addTo(mymap);								 
-								        };
-								 
-								        function error() {
-								          alert('現在地を取得できませんでした。');
-								        };
-								 
-								        navigator.geolocation.getCurrentPosition(success, error);
-								      } 
+						                 
 				            </script>	 
 					
 		  				
