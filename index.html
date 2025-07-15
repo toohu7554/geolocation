@@ -55,10 +55,10 @@
 					    <script>
 									  var mymap = L.map('mapid').setView([51.505, -0.09], 13);   <!--マップを埋め込む場所のidとマップオブジェクトを紐付,setViewで表示する座標（緯度,経度）・ズームレベルを設定-->
 		 
-									        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { <!-- マップに追加するタイルレイヤーを指定-->
+									        L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { <!-- マップに追加するタイルレイヤーを指定-->
 									          maxZoom: 18,
-									    	  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
-									        }).addTo(mymap);
+									    	  attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
+								                        }).addTo(mymap); 							
 
 						    
 						    　　function setCurLocation(){                                     <!--取得した現在地を使用して、現在地にマーカー設定-->
