@@ -85,7 +85,15 @@
 						                   attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
 						                        }).addTo(map); 							       
 								    }
-
+						    
+                                                         var option = {
+								 position: 'topright',   <!--現在地ボタンの表示場所を指定-->
+								 strings: { title: "現在地を表示",popup: "いまここ"},	<!--現在地ボタンに表示するツールチップと現在地マーカーをクリックした際に表示するメッセージを指定-->							 
+							         locateOptions: { maxZoom: 16} }　　　　　　　　　　　    <!-- 現在地を表示する際のズームレベルを指定します。-->
+								 
+						          var lc = L.control.locate(option).addTo(map);                 <!-- 画面表示時に現在地マーカーを表示-->
+						    
+						                      
 						                    var mymap = L.map('mapid').setView([35.7102, 139.8132], 15);
  
 								      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
