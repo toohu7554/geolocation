@@ -53,46 +53,6 @@
 						   <button type="onSignInButtonClick" onclick="onSignInButtonClick()">ここをクリック</button>
 					           <button id="leafret_topright" onClick="setCurLocation()">現在地を表示</button>						          
 					    <script>
-						    <!--
-									  var mymap = L.map('mapid').setView([51.505, -0.09], 13);   <!--マップを埋め込む場所のidとマップオブジェクトを紐付,setViewで表示する座標（緯度,経度）・ズームレベルを設定-->
-		 
-									        L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { <!-- マップに追加するタイルレイヤーを指定-->
-									          maxZoom: 18,
-									    	  attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
-								                        }).addTo(mymap); 							
-
-						    
-						    　　function setCurLocation(){                                     <!--取得した現在地を使用して、現在地にマーカー設定-->
-							      							       <!--setViewで地図を現在地に移動->L.markerでマーカーを設定-->
-										        if (navigator.geolocation == false){
-										          alert('現在地を取得できませんでした。[Geolocation API]');
-										          return;}
- 
-									 function success(e) {
-												var lat  = e.coords.latitude;
-												var lng = e.coords.longitude;
-												mymap.setView([lat, lng], 15);
-												L.marker([lat,lng]).addTo(mymap).bindPopup('現在地[Geolocation API]').openPopup();
-												};
-										 
-										        function error() {
-										          	alert('現在地を取得できませんでした。[Geolocation API]');
-										        	};
-										 								  <!--現在地の取得[非同期で行われ]-->	
-										        navigator.geolocation.getCurrentPosition(success, error); <!--取得後の処理は、コールバック関数（ここではsuccess関数 / error関数）が呼び出される-->
-										      }
-						    
-						    
-							function onLocationFound(e) {L.marker(e.latlng).addTo(mymap).bindPopup("現在地").openPopup();}		<!-- 位置情報取得が成功した際のイベントを登録[locationfoundイベントにonLocationFound関数を登録しているため]-->								 
-						    														<!--位置情報取得が成功した場合,onLocationFound関数が実行->現在位置にマーカー表示-->
-							function onLocationError(e) {alert("現在地を取得できませんでした。" + e.message);}
-										 										<!-- 位置情報取得が成功した際のイベントを登録-->								 
-						    														<!--位置情報の取得が失敗した場合,onLocationFound関数が実行->「現在地を取得できませんでした」アラート表示-->
-										      mymap.on('locationfound', onLocationFound);
-										      mymap.on('locationerror', onLocationError);
-										 
-										      mymap.locate({setView: true, maxZoom: 16, timeout: 20000});
-						    -->
 						    
 				                       function init() {       <!--init関数始まり------------------------------------------------------------------------------------------------------------------------------------------------------>
 								      		//地図を表示するdiv要素のidを設定
