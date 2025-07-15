@@ -39,7 +39,7 @@
 						    <p>経度：<span id="longitude">???</span><span>度</span></p>
 						    <p>高度：<span id="altitude">???</span><span>[m]</span></p></div>
 					       
-					       <button id="leafret_topright" onClick="setCurLocation()">現在地を表示</button>
+					       
 	       
 	                                            <div id="mapcontainer" style="width: 600px; height: 600px; position: relative;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"></div>
 						    <div id="map_canvas1" style="width:300px; height:300px"></div>
@@ -50,7 +50,8 @@
 				<h1>JavaScript練習中</h1>
 				<h2>DownLoad</h2>								
 				                   <button type="button" onclick="ShowAlert()">ここをクリック</button>
-						   <button type="onSignInButtonClick" onclick="onSignInButtonClick()">ここをクリック</button>							          
+						   <button type="onSignInButtonClick" onclick="onSignInButtonClick()">ここをクリック</button>
+					           <button id="leafret_topright" onClick="setCurLocation()">現在地を表示</button>						          
 					    <script>
 									  var mymap = L.map('mapid').setView([51.505, -0.09], 13);   <!--マップを埋め込む場所のidとマップオブジェクトを紐付,setViewで表示する座標（緯度,経度）・ズームレベルを設定-->
 		 
