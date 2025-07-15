@@ -57,10 +57,11 @@
 									    	  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
 									        }).addTo(mymap);
 
-							function onLocationFound(e) {L.marker(e.latlng).addTo(mymap).bindPopup("現在地").openPopup();}		<!-- 位置情報取得が成功した際のイベントを登録(locationfoundイベントにonLocationFound関数を登録しているため)-->								 
+							function onLocationFound(e) {L.marker(e.latlng).addTo(mymap).bindPopup("現在地").openPopup();}		<!-- 位置情報取得が成功した際のイベントを登録[locationfoundイベントにonLocationFound関数を登録しているため]-->								 
 						    														<!--位置情報取得が成功した場合,onLocationFound関数が実行->現在位置にマーカー表示-->
 							function onLocationError(e) {alert("現在地を取得できませんでした。" + e.message);}
-										 
+										 										<!-- 位置情報取得が成功した際のイベントを登録-->								 
+						    														<!--位置情報の取得が失敗した場合,onLocationFound関数が実行->「現在地を取得できませんでした」アラート表示-->
 										      mymap.on('locationfound', onLocationFound);
 										      mymap.on('locationerror', onLocationError);
 										 
