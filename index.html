@@ -53,6 +53,7 @@
 						   <button type="onSignInButtonClick" onclick="onSignInButtonClick()">ここをクリック</button>
 					           <button id="leafret_topright" onClick="setCurLocation()">現在地を表示</button>						          
 					    <script>
+						    <!--
 									  var mymap = L.map('mapid').setView([51.505, -0.09], 13);   <!--マップを埋め込む場所のidとマップオブジェクトを紐付,setViewで表示する座標（緯度,経度）・ズームレベルを設定-->
 		 
 									        L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { <!-- マップに追加するタイルレイヤーを指定-->
@@ -91,7 +92,7 @@
 										      mymap.on('locationerror', onLocationError);
 										 
 										      mymap.locate({setView: true, maxZoom: 16, timeout: 20000});
-						    
+						    -->
 						    
 				                       function init() {       <!--init関数始まり------------------------------------------------------------------------------------------------------------------------------------------------------>
 								      		//地図を表示するdiv要素のidを設定
