@@ -87,8 +87,8 @@
 								 strings: { title: "現在地を表示",popup: "いまここ"},	<!--現在地ボタンに表示するツールチップと現在地マーカーをクリックした際に表示するメッセージを指定-->							 
 							         locateOptions: { maxZoom: 16}　　　　　　　　　　　    <!-- 現在地を表示する際のズームレベルを指定します。-->
 							       
-						          //var lc = L.control.locate(option).addTo(map);                 <!-- 画面表示時に現在地マーカーを表示-->						    						                      						                 							              				          	 							  										 																						 
-							       
+						          var lc = L.control.locate(option).addTo(map);                 <!-- 画面表示時に現在地マーカーを表示-->						    						                      						                 							              				          	 							  										 																						 
+								  
 				                <main>
 					           <canvas id="canvas" width="200" height="200"> </canvas>
 		                                   <canvas  width=100height=100 style="border: solid 5pt orange"> SOMETHING GOES WRONG </canvas>
@@ -97,20 +97,18 @@
 					            <p id="temperature"></p>
 					            <p>アカウントにログインしてください:<span id="map-container">???</span><span>確認用</span></p>
                                                </main>
-						 
-        			  		
-	
-			
-					console.log("start");
-					console.log("warn");
+						         			  					
+							console.log("start");
+							console.log("warn");
 					
-					
+					funtion can(){
 					var canvas = document.getElementById('canvas'); //----------------------------------------------
 					     var c = canvas.getContext('2d'); 
 						 c.fillStyle = "red"; 
 						 c.fillRect(100,100,400,300); 
 					 
 					const image = document.getElementById("/js/station/om5ru80000003j6y-img/q2k4vk000001680b.png");
+					}
 					//---------------------------------------------------------------------------------------------
 					
 					
@@ -150,20 +148,20 @@
 						              }); 
 												}
         //-----------------------------------------------------------------------------------------------------------------------
-				 	    function ShowAlert() {
-							    	alert("30秒後にシャットダウンします");
-							          }
-				     
-				        function  onSignInButtonClick() {
-									  alert("Sign in with Google");
-									  }				    				    					 				 
+						 	    function ShowAlert() {
+									    	alert("30秒後にシャットダウンします");
+									          }
+						     
+						        function  onSignInButtonClick() {
+											  alert("Sign in with Google");
+											  }				    				    					 				 
 				    //------------------------------------------------------------------------------------------------------------				    				   				    				    
-				           // サインインボタンのクリックを処理する。
-			          function onSignInButtonClick() {
-							        // Googleアカウントでログインするためのポップアップを表示する。
-							        // アプリに適切なパーミッションを与える。
-						         ee.data.authenticateViaPopup(setUpMap);
-			                          }  //------------------------------------------------------------------------------------------
+							           // サインインボタンのクリックを処理する。
+						          function onSignInButtonClick() {
+										        // Googleアカウントでログインするためのポップアップを表示する。
+										        // アプリに適切なパーミッションを与える。
+									         ee.data.authenticateViaPopup(setUpMap);
+						                          }  //------------------------------------------------------------------------------------------
 
 			        // 認証エラーをポップアップで表示する。
                                    alert,
