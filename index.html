@@ -13,30 +13,22 @@
 	    <link rel="stylesheet" href="css/L.Control.Locate.min.css" />           //L.control.locateオブジェクトを設定
 	    <script src="js/L.Control.Locate.min.js"></script><!-- plugin -->
 					   <style>	     
-				           *{ margin:0; padding:0;}
-				            
-				            main{ background:rgb(240, 255, 255);}
-				            
+				           *{ margin:0; padding:0;}				            
+				            main{ background:rgb(240, 255, 255);}				            
 				            /* マップを含む div 要素のサイズを設定します。 */
-					    #map-container { height: 400px; width: 100%; background-color: #eee; }
-						   
+					    #map-container { height: 400px; width: 100%; background-color: #eee; }						   
 				            #canvas{ background:rgb(250,255,250);}
 						   
-                                             renderer: L.canvas()              //マップ内のすべてのパスにデフォルトでCanvasを使用
-						   
-				        </style>
-
-
-                                      
-						  
+                                             renderer: L.canvas()              //マップ内のすべてのパスにデフォルトでCanvasを使用						   
+				        </style>                                      						  
 	</head>				
        <body onload="init()">
 	       <div class="txt-margin">
 		    <p>緯度：<span id="latitude">???</span><span>度</span></p>
 		    <p>経度：<span id="longitude">???</span><span>度</span></p>
 		    <p>高度：<span id="altitude">???</span><span>[m]</span></p>
-	      </div>
-	       
+		       
+	      </div>	       
                                             <div id="mapcontainer" style="width: 600px; height: 600px; position: relative;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"></div>
 					    <div id="map_canvas1" style="width:300px; height:300px"></div>
              </div>
@@ -166,38 +158,28 @@
 				    //------------------------------------------------------------------------------------------------------------				    				   				    				    
 				           // サインインボタンのクリックを処理する。
 			          function onSignInButtonClick() {
-				        // Googleアカウントでログインするためのポップアップを表示する。
-				        // アプリに適切なパーミッションを与える。
-			         ee.data.authenticateViaPopup(setUpMap);
-			                          }  //------------------------------------------------------------------------------------------
-
-			        // 認証エラーをポップアップで表示する。
-                                   alert,
-			        /* extraScopes = */ ['https://www.googleapis.com/auth/cloud-platform'],
-			        // 既存の認証情報の再利用に失敗した場合、サインインボタンを表示します。
-			        () => document.getElementById("g-sign-in").removeAttribute("hidden"),
-			        // クラウド・プラットフォームへの書き込みやアクセスを代行する能力は必要ない。
-					   
-				         function setUpMap() {   // サインインボタンを隠す。
-				        document.getElementById("g-sign-in").setAttribute("hidden", "true");
-				      
-				        // Earth Engine API を初期化します。 APIを使用する前に一度呼び出す必要があります。
-				        ee.initialize();
-				      
-				        // マップを含むプレースホルダ DOM 要素への参照を取得します。
-				       const mapContainerEl = document.getElementById("map-container");
-					 }					     				     										 					 					 					 				
-
+						        // Googleアカウントでログインするためのポップアップを表示する。
+						        // アプリに適切なパーミッションを与える。
+					         ee.data.authenticateViaPopup(setUpMap);
+					                          }  //------------------------------------------------------------------------------------------
 			
-					                           
-					      
-					
-					      
-					      
-					      
-					      
-                         //------------------------------------------------------------------------------------------------
-			            			          
+						        // 認証エラーをポップアップで表示する。
+			                                   alert,
+						        /* extraScopes = */ ['https://www.googleapis.com/auth/cloud-platform'],
+						        // 既存の認証情報の再利用に失敗した場合、サインインボタンを表示します。
+						        () => document.getElementById("g-sign-in").removeAttribute("hidden"),
+						        // クラウド・プラットフォームへの書き込みやアクセスを代行する能力は必要ない。
+								   
+							         function setUpMap() {   // サインインボタンを隠す。
+							        document.getElementById("g-sign-in").setAttribute("hidden", "true");
+							      
+							        // Earth Engine API を初期化します。 APIを使用する前に一度呼び出す必要があります。
+							        ee.initialize();
+							      
+							        // マップを含むプレースホルダ DOM 要素への参照を取得します。
+							       const mapContainerEl = document.getElementById("map-container");
+								 }					     				     										 					 					 					 												                           					      										      					      					      					
+                         //------------------------------------------------------------------------------------------------			            			          
 			             function initAnimation(){
 						    var canvas = document.getElementById('canvas');
 						    var ctx = canvas.getContext('2d');
