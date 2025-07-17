@@ -56,19 +56,14 @@
 						          var gsipale = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', { attribution: gsiattr });
 						          var osm = L.tileLayer('http://tile.openstreetmap.jp/{z}/{x}/{y}.png',
 						          { attribution: "<a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors" });
-						      //オーバーレイ用のタイルレイヤ
-						      //opacityで透過度を設定、maxNativeZoomを指定すると、それ以上のズームレベルのタイルデータは、指定のズームレベルのタイル画像を拡大して表示される
-						         var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
-						         var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
-						         var baseMaps = {
-							        "地理院地図": gsi,
-							        "淡色地図": gsipale,
-							        "オープンストリートマップ": osm
-							      };
-						         var overlayMaps = {
-							        "色別標高図": gsirelief,
-							        "陰影起伏図": gsirehillshademap
-							      };
+						       //オーバーレイ用のタイルレイヤ
+						       //opacityで透過度を設定、maxNativeZoomを指定すると、それ以上のズームレベルのタイルデータは、指定のズームレベルのタイル画像を拡大して表示される
+						          var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
+						          var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
+							
+						          var baseMaps = { "地理院地図": gsi, "淡色地図": gsipale, "オープンストリートマップ": osm };
+						          var overlayMaps = { "色別標高図": gsirelief, "陰影起伏図": gsirehillshademap};
+							       
 								             L.control.layers(baseMaps, overlayMaps).addTo(map);
 								             gsi.addTo(map);
 
@@ -77,9 +72,36 @@
                                                                    L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 						                   attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
 						                        }).addTo(map); 							       
-								    }
-														       							       												      						    
-				            </script>	 
+								    }		<!----------------------------------------------------------------------------------------------------------->
+
+							    function setCurLocation(){                               <!--取得した現在地を使用して、現在地にマーカー設定-->								      						
+										if (navigator.geolocation == false){ <!--setViewで地図を現在地に移動->L.markerでマーカーを設定-->
+											alert('現在地を取得できませんでした。[Geolocation API]');
+											return;}
+	 
+								
+							                           function onLocationFound(e) {L.marker(e.latlng).addTo(mymap).bindPopup("現在地").openPopup();}		<!-- 位置情報取得が成功した際のイベントを登録[locationfoundイベントにonLocationFound関数を登録しているため]-->								 
+						    														<!--位置情報取得が成功した場合,onLocationFound関数が実行->現在位置にマーカー表示-->			    function success(e) {
+													     var lat  = e.coords.latitude;
+													     var lng = e.coords.longitude;
+													              mymap.setView([lat, lng], 15);
+														      L.marker([lat,lng]).addTo(mymap).bindPopup('現在地[Geolocation API]').openPopup();
+														};
+															 
+													    function error() {
+																alert('現在地を取得できませんでした。[Geolocation API]');
+															     };	
+								    
+										       navigator.geolocation.getCurrentPosition(success, error);   <!--取得後の処理は、コールバック関数（ここではsuccess関数 / error関数）が呼び出される-->
+									    								  <!--現在地の取得[非同期で行われ]-->
+										 										<!-- 位置情報取得が成功した際のイベントを登録-->								 
+						    														<!--位置情報の取得が失敗した場合,onLocationFound関数が実行->「現在地を取得できませんでした」アラート表示-->
+										      mymap.on('locationfound', onLocationFound);
+										      mymap.on('locationerror', onLocationError);
+										 
+										      mymap.locate({setView: true, maxZoom: 16, timeout: 20000});
+						    
+						    
 					
 		  				
 						 
