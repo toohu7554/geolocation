@@ -108,7 +108,7 @@
 							
 								 
 								var marker;
-								map.on("locationfound", function(location) {
+								map.on("mapcontainer", function(location) {
 								    if (!marker){
 								        marker = L.userMarker(location.latlng).addTo(map);
 								    }
