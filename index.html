@@ -112,13 +112,14 @@
 
 						     
 								 
-								map.locate({             //現在地の取得
+								map.locate({             //現在地の取得									
 								     watch: false,
 								     locate: true,
-								     setView: true,
-								     alert('現在地の取得');
+								     setView: true,								    
 								     enableHighAccuracy: true	
 									});     
+						                      alert('現在地の取得');
+						    
 							var marker;                     //現在地の取得に成功
 							map.on("locationfound", function(location) {
 								if (!marker){
