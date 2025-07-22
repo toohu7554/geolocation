@@ -125,6 +125,13 @@
 													// Mapの基本設定	
 							var map = L.map('mapid').setView([37.9403, 139.3581], 15);
 						    
+						    		navigator.geolocation.getCurrentPosition //現在位置を取得																							
+									   var latitude = position.coords.latitude;  //現在位置情報(緯度)を持つCoordinatesオブジェクトを取得する
+									   var longitude = position.coords.longitude;//現在位置情報(経度)を持つCoordinatesオブジェクトを取得する				
+									  											
+										document.getElementById("latitude").innerHTML = latitude;
+										document.getElementById("longitude").innerHTML = longitude;																	                        						
+						    
 						<!--	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {-->
 						<!--		maxZoom: 18,-->
 						<!--		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '-->
@@ -146,7 +153,7 @@
 								if (!marker){
 								marker = L.userMarker(latitude,longitude).addTo(map);
 									}
-								marker.setLatLng(location.latlng);
+								marker.setLatLng(latitude,longitude);
 								marker.setPulsing(true);
 								});
 
