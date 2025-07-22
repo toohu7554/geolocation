@@ -47,6 +47,7 @@
                                             <div id="mapcontainer" style="width: 600px; height: 600px; position: relative;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"></div>
 					    <div id="map_canvas1" style="width:300px; height:300px"></div>
 	       				    <div id="mapcontainer"></div>
+	       				    <div id="mapid"></div>
              </div>
 						 
 						 
@@ -95,38 +96,21 @@
 						                        }).addTo(map); 							       
 								    }    <!-------------------------------------------------------------------------------------------------------------------------------------------------->
 
+
+							var map = L.map('mapid').setView([37.9403, 139.3581], 15);	// Mapの基本設定						 
+								        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+								      		maxZoom: 18,
+								      		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
+								      	}).addTo(map);
+							       
 						        var options = {                                              //L.userMarker オブジェクトを使用
 								    pulsing: true //マーカーの波形ON（true）・Off（false）を指定
 								   ,accuracy: 100 // meters 精確さ。（単位：メートル）
 								   ,smallIcon: true //小さいアイコンの表示。表示（true）・非表示（false）。
 								     };
 						    
-								//L.userMarker([35.7101,139.8087], options).addTo(map).bindPopup("pulsing true");	
+								L.userMarker([35.7101,139.8087], options).addTo(map).bindPopup("pulsing true");	
 						    
-						
-						       
-							
-								 
-								var marker;
-								map.on("mapcontainer", function(location) {
-								    if (!marker){
-								        marker = L.userMarker(location.latlng).addTo(map);
-								    }
-								    marker.setLatLng(location.latlng);
-								    marker.setPulsing(true);
-								});
-								 
-								map.on('locationerror', function(e) {
-								    alert('現在地が取得できませんでした。');
-								});
-								 
-								map.locate({
-								    watch: false,
-								    locate: true,
-								    setView: true,
-								    enableHighAccuracy: true
-								});		
-
 							var marker;
 								map.on("locationfound", function(location) {
 								    if (!marker){
@@ -136,11 +120,18 @@
 								    marker.setPulsing(true);
 								});
 						    
-                                                               map.on('locationerror', function(e) {
+                                                           
+						                map.on('locationerror', function(e) {
 								    alert('現在地が取得できませんでした。');
 								});
+								 
+								map.locate({
+								     watch: false,
+								     locate: true,
+								     setView: true,
+								     enableHighAccuracy: true
+								});		
 
-						       
 				            </script>	 
 					
 		  				
