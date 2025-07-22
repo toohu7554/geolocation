@@ -160,9 +160,9 @@
 							var marker;                     //現在地の取得に成功
 							map.on("locationfound", function(location) {
 								if (!marker){
-								marker = L.userMarker(latitude,longitude).addTo(map);
+								marker = L.userMarker([37.9403, 139.3581]).addTo(map);
 									}
-								marker.setLatLng(37.9403, 139.3581);
+								marker.setLatLng([37.9403, 139.3581]);
 								marker.setPulsing(true);
 								});
 
