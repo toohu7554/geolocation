@@ -144,7 +144,7 @@
 							var marker;                     //現在地の取得に成功
 							map.on("locationfound", function(location) {
 								if (!marker){
-								marker = L.userMarker(location.latlng).addTo(map);
+								marker = L.userMarker(latitude,longitude).addTo(map);
 									}
 								marker.setLatLng(location.latlng);
 								marker.setPulsing(true);
