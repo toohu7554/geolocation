@@ -4,37 +4,39 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">        
 	<title>Insert title here</title>
 	
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css"> 
-
-	<link rel="stylesheet" href="https://github.com/mapshakers/leaflet-icon-pulse"> 
-         		
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" /> 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
-		
-	<script src="https://github.com/mapshakers/leaflet-icon-pulse"></script>
-		
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="">	
+	<link rel="stylesheet" href="style.css">	
 	<!-- plugin -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> //現在地ボタン用のアイコンに Font Awesome のアイコンを使用するため
-	    <link rel="stylesheet" href="css/L.Control.Locate.min.css">           //L.control.locateオブジェクトを設定
+	    <link rel="stylesheet" href="css/L.Control.Locate.min.css" />           //L.control.locateオブジェクトを設定
 	    <script src="js/L.Control.Locate.min.js"></script><!-- plugin -->
 					   <style>	     
-				           *{ margin:0; padding:0;}				            
-				            main{ background:rgb(240, 255, 255);}				            
+				           *{ margin:0; padding:0;}
+				            
+				            main{ background:rgb(240, 255, 255);}
+				            
 				            /* マップを含む div 要素のサイズを設定します。 */
-					    #map-container { height: 400px; width: 100%; background-color: #eee; }						   
+					    #map-container { height: 400px; width: 100%; background-color: #eee; }
+						   
 				            #canvas{ background:rgb(250,255,250);}
 						   
-                                             renderer: L.canvas()              //マップ内のすべてのパスにデフォルトでCanvasを使用						   
-				        </style>                                      						  
+                                             renderer: L.canvas()              //マップ内のすべてのパスにデフォルトでCanvasを使用
+						   
+				        </style>
+
+
+                                      
+						  
 	</head>				
        <body onload="init()">
 	       <div class="txt-margin">
 		    <p>緯度：<span id="latitude">???</span><span>度</span></p>
 		    <p>経度：<span id="longitude">???</span><span>度</span></p>
 		    <p>高度：<span id="altitude">???</span><span>[m]</span></p>
-		       
-	      </div>	       
+	      </div>
+	       
                                             <div id="mapcontainer" style="width: 600px; height: 600px; position: relative;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"></div>
 					    <div id="map_canvas1" style="width:300px; height:300px"></div>
              </div>
@@ -62,14 +64,19 @@
 						          var gsipale = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', { attribution: gsiattr });
 						          var osm = L.tileLayer('http://tile.openstreetmap.jp/{z}/{x}/{y}.png',
 						          { attribution: "<a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors" });
-						       //オーバーレイ用のタイルレイヤ
-						       //opacityで透過度を設定、maxNativeZoomを指定すると、それ以上のズームレベルのタイルデータは、指定のズームレベルのタイル画像を拡大して表示される
-						          var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
-						          var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
-							
-						          var baseMaps = { "地理院地図": gsi, "淡色地図": gsipale, "オープンストリートマップ": osm };
-						          var overlayMaps = { "色別標高図": gsirelief, "陰影起伏図": gsirehillshademap};
-							       
+						      //オーバーレイ用のタイルレイヤ
+						      //opacityで透過度を設定、maxNativeZoomを指定すると、それ以上のズームレベルのタイルデータは、指定のズームレベルのタイル画像を拡大して表示される
+						         var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
+						         var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
+						         var baseMaps = {
+							        "地理院地図": gsi,
+							        "淡色地図": gsipale,
+							        "オープンストリートマップ": osm
+							      };
+						         var overlayMaps = {
+							        "色別標高図": gsirelief,
+							        "陰影起伏図": gsirehillshademap
+							      };
 								             L.control.layers(baseMaps, overlayMaps).addTo(map);
 								             gsi.addTo(map);
 
@@ -78,36 +85,9 @@
                                                                    L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 						                   attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
 						                        }).addTo(map); 							       
-								    }		<!----------------------------------------------------------------------------------------------------------->
-
-							    function setCurLocation(){                               <!--取得した現在地を使用して、現在地にマーカー設定-->								      						
-										if (navigator.geolocation == false){ <!--setViewで地図を現在地に移動->L.markerでマーカーを設定-->
-											alert('現在地を取得できませんでした。[Geolocation API]');
-											return;}
-	 
-								
-							                           function onLocationFound(e) {L.marker(e.latlng).addTo(mymap).bindPopup("現在地").openPopup();}		<!-- 位置情報取得が成功した際のイベントを登録[locationfoundイベントにonLocationFound関数を登録しているため]-->								 
-						    														<!--位置情報取得が成功した場合,onLocationFound関数が実行->現在位置にマーカー表示-->			    function success(e) {
-													     var lat  = e.coords.latitude;
-													     var lng = e.coords.longitude;
-													              mymap.setView([lat, lng], 15);
-														      L.marker([lat,lng]).addTo(mymap).bindPopup('現在地[Geolocation API]').openPopup();
-														};
-															 
-													    function error() {
-																alert('現在地を取得できませんでした。[Geolocation API]');
-															     };	
-								    
-										       navigator.geolocation.getCurrentPosition(success, error);   <!--取得後の処理は、コールバック関数（ここではsuccess関数 / error関数）が呼び出される-->
-									    								  <!--現在地の取得[非同期で行われ]-->
-										 										<!-- 位置情報取得が成功した際のイベントを登録-->								 
-						    														<!--位置情報の取得が失敗した場合,onLocationFound関数が実行->「現在地を取得できませんでした」アラート表示-->
-										      mymap.on('locationfound', onLocationFound);
-										      mymap.on('locationerror', onLocationError);
-										 
-										      mymap.locate({setView: true, maxZoom: 16, timeout: 20000});
-						    
-						    
+								    }
+														       							       												      						    
+				            </script>	 
 					
 		  				
 						 
@@ -186,28 +166,38 @@
 				    //------------------------------------------------------------------------------------------------------------				    				   				    				    
 				           // サインインボタンのクリックを処理する。
 			          function onSignInButtonClick() {
-						        // Googleアカウントでログインするためのポップアップを表示する。
-						        // アプリに適切なパーミッションを与える。
-					         ee.data.authenticateViaPopup(setUpMap);
-					                          }  //------------------------------------------------------------------------------------------
+				        // Googleアカウントでログインするためのポップアップを表示する。
+				        // アプリに適切なパーミッションを与える。
+			         ee.data.authenticateViaPopup(setUpMap);
+			                          }  //------------------------------------------------------------------------------------------
+
+			        // 認証エラーをポップアップで表示する。
+                                   alert,
+			        /* extraScopes = */ ['https://www.googleapis.com/auth/cloud-platform'],
+			        // 既存の認証情報の再利用に失敗した場合、サインインボタンを表示します。
+			        () => document.getElementById("g-sign-in").removeAttribute("hidden"),
+			        // クラウド・プラットフォームへの書き込みやアクセスを代行する能力は必要ない。
+					   
+				         function setUpMap() {   // サインインボタンを隠す。
+				        document.getElementById("g-sign-in").setAttribute("hidden", "true");
+				      
+				        // Earth Engine API を初期化します。 APIを使用する前に一度呼び出す必要があります。
+				        ee.initialize();
+				      
+				        // マップを含むプレースホルダ DOM 要素への参照を取得します。
+				       const mapContainerEl = document.getElementById("map-container");
+					 }					     				     										 					 					 					 				
+
 			
-						        // 認証エラーをポップアップで表示する。
-			                                   alert,
-						        /* extraScopes = */ ['https://www.googleapis.com/auth/cloud-platform'],
-						        // 既存の認証情報の再利用に失敗した場合、サインインボタンを表示します。
-						        () => document.getElementById("g-sign-in").removeAttribute("hidden"),
-						        // クラウド・プラットフォームへの書き込みやアクセスを代行する能力は必要ない。
-								   
-							         function setUpMap() {   // サインインボタンを隠す。
-							        document.getElementById("g-sign-in").setAttribute("hidden", "true");
-							      
-							        // Earth Engine API を初期化します。 APIを使用する前に一度呼び出す必要があります。
-							        ee.initialize();
-							      
-							        // マップを含むプレースホルダ DOM 要素への参照を取得します。
-							       const mapContainerEl = document.getElementById("map-container");
-								 }					     				     										 					 					 					 												                           					      										      					      					      					
-                         //------------------------------------------------------------------------------------------------			            			          
+					                           
+					      
+					
+					      
+					      
+					      
+					      
+                         //------------------------------------------------------------------------------------------------
+			            			          
 			             function initAnimation(){
 						    var canvas = document.getElementById('canvas');
 						    var ctx = canvas.getContext('2d');
