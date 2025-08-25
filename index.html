@@ -87,6 +87,9 @@
 								function errorCallback(error){
 									alert("位置情報が取得できませんでした");
 							                                };
+
+
+								// Locate -----------------------------------------------------------------
 									var option = {
 										  position: 'topright',
 										  strings: {
@@ -100,6 +103,10 @@
 										 
 										var lc = L.control.locate(option).addTo(map);
 
+
+							var lc = L.control.locate(option).addTo(map);
+								lc.start();
+							//-------------------------------------------------------------------------------
 
 
 							
