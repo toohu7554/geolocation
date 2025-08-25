@@ -88,6 +88,22 @@
 								function errorCallback(error){
 									alert("位置情報が取得できませんでした");
 							                                };
+									
+
+									// Locate
+										var option = {
+										  position: 'topright',
+										  strings: {
+										      title: "現在地を表示",
+										      popup: "いまここ"
+										  },
+										  locateOptions: {
+										    maxZoom: 16
+										  }
+										}
+										 
+										var lc = L.control.locate(option).addTo(map);
+									
 				                       function init() { <!---------------------------------------------------------------------------------------------------------------------------------------------------->
 						      //地図を表示するdiv要素のidを設定
 						      var map = L.map('mapcontainer',{zoomControl:false});
