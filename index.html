@@ -18,11 +18,12 @@
 		
 	<!-- plugin -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> //現在地ボタン用のアイコンに Font Awesome のアイコンを使用するため		                              //[font-awesome.min.css]
-	    <link rel="stylesheet" href="https://github.com/domoritz/leaflet-locatecontrol/blob/gh-pages/dist/L.Control.Locate.css" />           //L.control.locateオブジェクトを設定                                          //[L.Control.Locate.css]
+	    <!--<link rel="stylesheet" href="https://github.com/domoritz/leaflet-locatecontrol/blob/gh-pages/dist/L.Control.Locate.css" />           //L.control.locateオブジェクトを設定                                          //[L.Control.Locate.css]-->
+		<link rel="stylesheet" href="css/L.Control.Locate.min.css" />
 	   <link rel="stylesheet" href="https://unpkg.com/leaflet@-moz-keyframes leaflet-usermarker-pulsate" />														     //[leaflet-usermarker-pulsate]	
-	   <script src="https://github.com/domoritz/leaflet-locatecontrol/blob/gh-pages/src/L.Control.Locate.js"></script>												     
-	   <script src="https://github.com/heyman/leaflet-usermarker/blob/master/src/leaflet.usermarker.js"></script>
-	   <script src="https://kita-note.com/leaflet/plugins/marker/08_leaflet-usermarker/index1.html"></script>	
+	   <!--<script src="https://github.com/domoritz/leaflet-locatecontrol/blob/gh-pages/src/L.Control.Locate.js"></script>	-->											     
+	   <!-- <script src="https://github.com/heyman/leaflet-usermarker/blob/master/src/leaflet.usermarker.js"></script> -->
+	   <!-- <script src="https://kita-note.com/leaflet/plugins/marker/08_leaflet-usermarker/index1.html"></script>	-->
 		<!-- plugin -->
 					   <style type="text/css">	     
 				           *{ margin:0; padding:0;}
@@ -86,6 +87,22 @@
 								function errorCallback(error){
 									alert("位置情報が取得できませんでした");
 							                                };
+									var option = {
+										  position: 'topright',
+										  strings: {
+										      title: "現在地を表示",
+										      popup: "いまここ"
+										  },
+										  locateOptions: {
+										    maxZoom: 16
+										  }
+										}
+										 
+										var lc = L.control.locate(option).addTo(map);
+
+
+
+							
 				                       function init() { <!---------------------------------------------------------------------------------------------------------------------------------------------------->
 						      //地図を表示するdiv要素のidを設定
 						      var map = L.map('mapcontainer',{zoomControl:false});
