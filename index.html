@@ -124,39 +124,29 @@
 				
 		           <button type="button" onclick="ShowAlert()">ここをクリック</button>
 				   <button type="image" onclick="onSignInButtonClick()">ここをクリック</button>	
-			
-			          
-					    //****************************************************************************************************************
-							        //-----------------------------------------------------------------------------------------------------			            			        								
-							 // clearWatch()         -->watchPosition()メソッドで取得中のデバイスの監視状況をクリアする						  
+				
+			<script> //****************************************************************************************************************							        		            			        								
+							 // clearWatch()         -->watchPosition()メソッドで取得中のデバイスの監視状況をクリアする	//--------------------------------------
 							 //「コールバック関数」
 							 // PositionCallback　　 -->位置情報の取得が成功したときに呼び出される(引数:Positionオブジェクト)
 							 // PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト)
 							  						  											
 							navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //現在位置を取得
 								
-								function successCallback(position){   //成功した場合									
+							function successCallback(position){   //成功した場合									
 									   var latitude = position.coords.latitude;  //現在位置情報(緯度)を持つCoordinatesオブジェクトを取得する
 									   var longitude = position.coords.longitude;//現在位置情報(経度)を持つCoordinatesオブジェクトを取得する				
 									   var altitude = position.coords.altitude; //現在位置情報(高度)を持つCoordinatesオブジェクトを取得する
 											
-										document.getElementById("latitude").innerHTML = latitude;
-										document.getElementById("longitude").innerHTML = longitude;
-										document.getElementById("altitude").innerHTML = altitude;
+										 document.getElementById("latitude").innerHTML = latitude;
+										 document.getElementById("longitude").innerHTML = longitude;
+										 document.getElementById("altitude").innerHTML = altitude;
 								                        };
 																										
 								function errorCallback(error){
 									alert("位置情報が取得できませんでした");
 							                                };
-
-									
-
-
-
-							
-
-
-							
+				
 				                       function init() { <!---------------------------------------------------------------------------------------------------------------------------------------------------->
 						      //地図を表示するdiv要素のidを設定
 						      var map = L.map('mapcontainer',{zoomControl:false});
@@ -165,7 +155,7 @@
 						          map.setView([37.9473, 139.32825], 14);
 
 							  													     
-                                                          var gsiattr = "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>";
+                                var gsiattr = "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>";
 						          var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', { attribution: gsiattr });
 						          var gsipale = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', { attribution: gsiattr });
 						          var osm = L.tileLayer('http://tile.openstreetmap.jp/{z}/{x}/{y}.png',
