@@ -51,7 +51,7 @@
         				<!-- plugin -->
 		
 	</head>				
-       <body onload="init()">
+       <body> //onload="init()">
 
 		   
 			   // Mapの基本設定 ************************************************************************************
@@ -97,6 +97,7 @@
 			   <script type="text/psajs" data-pagespeed-orig-index="2">
 	            var map=L.map('mapid',{center:[35.7122,139.8117],zoom:15,minZoom:13,maxZoom:16});L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',{attribution:'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '}).addTo(map);var option={position:'topright',strings:{title:"現在地を表示",popup:"いまここ"},locateOptions:{maxZoom:16}}
 	var lc=L.control.locate(option).addTo(map);
+			</body>	   
 	        </script>
 		   <noscript class="psa_add_styles">
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="">
