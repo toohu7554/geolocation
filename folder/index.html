@@ -61,28 +61,33 @@
 				
 				
 		           <button type="button" onclick="ShowAlert()">ここをクリック</button>
-				   <button type="image" onclick="onSignInButtonClick()">ここをクリック</button>	
-		   
+				   <button type="image" onclick="onSignInButtonClick()">ここをクリック</button>			
 					<body onload="init()">
+
 						
-					<div>
-  					<div id="mapcontainer" style="width:600px;height:600px"></div>
-		
-		
-					<div class="txt-margin">
-		            <p>緯度：<span id="latitude">???</span><span>度</span></p>
-		            <p>経度：<span id="longitude">???</span><span>度</span></p>
-		            <p>高度：<span id="altitude">???</span><span>度</span></p>		            
-		        	</div>
-		
-		            <div id="map"></div>				   				
-		   				
-		   						   						  
-				<!-- Googleでログイン」ボタン、最初は隠れている。                                    
-					      							
-				 <div id="map_canvas1" style="width:300px; height:300px"></div>
-				 </div>
-				 
+					<div> <!--div始まり ----------------------------------------------------------->
+  						<div id="mapcontainer" style="width:600px;height:600px"></div>
+				    	<div id="map"></div>
+						
+						<div class="txt-margin">
+		            		<p>緯度：<span id="latitude">???</span><span>度</span></p>
+		            		<p>経度：<span id="longitude">???</span><span>度</span></p>
+		            		<p>高度：<span id="altitude">???</span><span>度</span></p>		            
+		        		</div>
+
+					<template>
+  						<div id="rain_fall" ref="rainFall">
+    						<canvas ref="map" />
+  						</div>
+						
+						<div>
+						    <input type="date" v-model="dateInput" />
+  						</div>
+					</template>
+				            				   						   						   						   						  
+				       			<!-- Googleでログイン」ボタン、最初は隠れている。-->                                    					      							
+				 		<div id="map_canvas1" style="width:300px; height:300px"></div>
+				    </div> <!--div終わり -------------------------------------------------------------->
 				 			<!-- JAXA Earth API for JavaScript を読み込み（API ドキュメントに従って取得） -->
 				 		
 
