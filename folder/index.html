@@ -110,6 +110,7 @@
 							import type { Ref } from "vue";
 							
 							const rainFall: Ref<HTMLDivElement | null> = ref(null);
+					
 							const dateInput: Ref<string> = ref(
 							  new Date()
 							    .toLocaleDateString("ja-JP", {
@@ -148,13 +149,16 @@
 							    height: 600,
 							    onloading: null,
 							  });
+								
 							  map.value = image.getCanvas();
 							
 							  if (rainFall.value?.firstChild) {
-							    rainFall.value.removeChild(rainFall.value.firstChild);
-							  }
+							       rainFall.value.removeChild(rainFall.value.firstChild);
+							       }
+								
 							  rainFall.value?.appendChild(map.value);
 							};
+					
 							</script>
 					
 					var canvas = document.getElementById('canvas'); //----------------------------------------------
