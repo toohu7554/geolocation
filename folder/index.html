@@ -103,7 +103,59 @@
 				<script>
 					console.log("start");
 					console.log("warn");
-				
+					
+						<script setup lang="ts">
+							import * as je from "@/lib/jaxa.earth.esm.js";
+							import { onMounted, onUpdated, ref } from "vue";
+							import type { Ref } from "vue";
+							
+							const rainFall: Ref<HTMLDivElement | null> = ref(null);
+							const dateInput: Ref<string> = ref(
+							  new Date()
+							    .toLocaleDateString("ja-JP", {
+							      year: "numeric",
+							      month: "2-digit",
+							      day: "2-digit",
+							    })
+							    .replaceAll("/", "-") // yyyy-mm-dd
+							);
+							const map: Ref<HTMLCanvasElement | null> = ref(null);
+							
+							const collection =
+							  "https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/NASA.EOSDIS_Terra.MODIS_MOD11C1-LST.daytime.v061_global_half-monthly/collection.json";
+							const bbox = [122, 20, 148, 46];
+							
+							onMounted(() => {
+							  renderMap(new Date(dateInput.value));
+							});
+							onUpdated(() => {
+							  renderMap(new Date(dateInput.value));
+							});
+							
+							const renderMap = async (date: Date) => {
+							  const image = await je.getImage({
+							    // MODISの地表面温度のデータ
+							    collection: collection,
+							    band: "LST",
+							    date,
+							    colorMap: {
+							      min: 273.15 - 5,
+							      max: 273.15 + 35,
+							      colors: "jet",
+							    },
+							    bbox: bbox,
+							    width: 600,
+							    height: 600,
+							    onloading: null,
+							  });
+							  map.value = image.getCanvas();
+							
+							  if (rainFall.value?.firstChild) {
+							    rainFall.value.removeChild(rainFall.value.firstChild);
+							  }
+							  rainFall.value?.appendChild(map.value);
+							};
+							</script>
 					
 					var canvas = document.getElementById('canvas'); //----------------------------------------------
 					 var c = canvas.getContext('2d'); 
@@ -262,22 +314,18 @@
 			            //-----------------------------------------------------------------------------------------------------
 			            
 			            /*
-						  https://qiita.com/orangecarol/items/c84efeca519e2d97bb34
-						  
+						  //https://qiita.com/orangecarol/items/c84efeca519e2d97bb34						  
 						 「*メゾット」
-						  getCurrentPosition() -->デバイスの現在位置を取得する
-						  watchPosition()      -->デバイスの位置情報を監視する
+						  //getCurrentPosition() -->デバイスの現在位置を取得する
+						  //watchPosition()      -->デバイスの位置情報を監視する
 						 // clearWatch()         -->watchPosition()メソッドで取得中のデバイスの監視状況をクリアする
 						  
 						 //「コールバック関数」
 						 // PositionCallback　　 -->位置情報の取得が成功したときに呼び出される(引数:Positionオブジェクト)
-						 // PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト)
-						  
-						  
-						// */
+						 // PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト)						  						
+						 */
 						
-								navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //現在位置を取得
-								
+								navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //現在位置を取得								
 									function successCallback(position){   //成功した場合
 									
 										var latitude = position.coords.latitude;  //現在位置情報(緯度)を持つCoordinatesオブジェクトを取得する
@@ -287,10 +335,7 @@
 										document.getElementById("latitude").innerHTML = latitude;
 										document.getElementById("longitude").innerHTML = longitude;
 										document.getElementById("altitude").innerHTML = altitude;
-							};
-							
-							
-							
+							              };																					
 							//--------------------------------------------------------------------------
 							
 							        function errorCallback(error){
@@ -299,68 +344,6 @@
 			            
 			            			
 			       </script>
-			      
-			      
-					<!--			  
-			        // プレースホルダDOM要素内にインタラクティブ・マップを作成する。
-			          //const embeddedMap = new google.maps.Map(mapContainerEl, {
-			          // グランドキャニオンへの初期マップビューポートをパンとズーム。
-			          // center: {lng: -112.8598, lat: 36.2841},
-			          // zoom: 9,
-			        //});
-				     // デジタル標高モデルのリファレンスを取得し、アルゴリズムを適用する。
-			         // 勾配を計算する。
-			      //    const srtm = ee.Image("CGIAR/SRTM90_V4");
-			      //    const slope = ee.Terrain.slope(srtm);
-			      
-			         // 表示可能なタイルをオンデマンドで取得し、表示するための新しいタイル・ソースを作成する。
-			         // 地図上で。
-			        //  const mapId = slope.getMap({min: 0, max: 60});
-			        //  console.log("mapID="+mapId);
-			         // const tileSource = new ee.layers.EarthEngineTileSource(mapId);
-			         // const overlay = new ee.layers.ImageOverlay(tileSource);
-			         // embeddedMap.overlayMapTypes.push(overlay);
-			         //  }-->
-			      
-			        
-			      
-			       
-			        
-			     
-			      
-			      
-			      <!--
-			       // const { createCanvas, loadImage } = require('canvas')
-					//const canvas = createCanvas(200, 200)
-					//const ctx = canvas.getContext('2d')
-					
-					//const canvas = document.getElementById("canvas");								
-					//const image = document.getElementById("/js/station/om5ru80000003j6y-img/q2k4vk000001680b.png");
-					
-					//image.addEventListener("load", (e) => {
-//					  ctx.drawImage(image, 33, 71, 104, 124, 21, 20, 87, 104);
-	//				});
-					
-					
-					// オーサム！」と書く
-					//ctx.font = '30px Impact'
-					//ctx.rotate(0.1)
-					//ctx.fillText('Awesome!', 50, 100)
-					
-					// テキストの下に線を引く
-					//var text = ctx.measureText('Awesome!')
-					//ctx.strokeStyle = 'rgba(0,0,0,0.5)'
-					//ctx.beginPath()
-					//ctx.lineTo(50, 102)
-					//ctx.lineTo(50 + text.width, 102)
-					//ctx.stroke()					
-					// ライムのヘルメットをかぶった猫を描く
-					//loadImage('examples/images/lime-cat.jpg').then((image) => {
-					  //ctx.drawImage(image, 50, 0, 70, 70)					
-					 
-					//})
-					
-					-->		
 																        			             			      			     																							           
 		</body>
 </html>
