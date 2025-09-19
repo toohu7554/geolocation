@@ -102,7 +102,8 @@
 					console.log("warn");
 					
 						//<script setup lang="ts">
-							//import * as je from "@/lib/jaxa.earth.esm.js";
+					function init_jaxa () {
+							import * as je from "@/lib/jaxa.earth.esm.js";
 							import { onMounted, onUpdated, ref } from "vue";
 							import type { Ref } from "vue";
 							
@@ -155,7 +156,7 @@
 								
 							  rainFall.value?.appendChild(map.value);
 							};
-					
+					}
 							
 					
 					var canvas = document.getElementById('canvas'); //----------------------------------------------
@@ -342,7 +343,7 @@
 										alert("位置情報が取得できませんでした");
 						             };
 			            
-			            			
+						
 			       </script>
 																        			             			      			     																							           
 		</body>
