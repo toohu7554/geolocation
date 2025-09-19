@@ -124,46 +124,40 @@
 					                  if (!response.ok) {
 					                      // HTTPステータスが200番台以外の場合にエラーをスロー
 					                      throw new Error(`HTTP error! status: ${response.status}`);
-					                  }
+					                     }
 					                  return response.json(); // JSON形式に変換
 					              })
 					              
 					              					              					              					             								 
 						    //【ここにAPIレスポンスからのデータ取得処理を実装】								   
-								    .then(data => { // データ取得成功時の処理
-                  // APIレスポンスの構造を確認し、データが存在するかチェック
-                  if (data && data.hourly && data.hourly.temperature_2m && data.hourly.temperature_2m.length > 0) {
-                      const latestTemperature = data.hourly.temperature_2m[0];
-
-                      // HTMLのp要素に気温を出力
-                      const temperatureElement = document.getElementById('temperature');
-                      temperatureElement.textContent = `現在の気温は${latestTemperature}℃です`; // バッククォートを使用
-                  } else {
-                      console.warn('APIレスポンスに予期せぬデータ形式、または気温データが見つかりませんでした。');
-                      const temperatureElement = document.getElementById('temperature');
-                      temperatureElement.textContent = '気温データを取得できませんでした。';
-                  }
-              })
-              .catch(error => { // エラー発生時の処理
-                  console.error('データ取得に失敗しました:', error); // エラー内容をコンソールに出力
-                  const temperatureElement = document.getElementById('temperature');
-                  temperatureElement.textContent = '気温データの取得中にエラーが発生しました。詳細はコンソールを確認してください。';
-              });
+							 .then(data => { // データ取得成功時の処理
+					                  // APIレスポンスの構造を確認し、データが存在するかチェック
+					                  if (data && data.hourly && data.hourly.temperature_2m && data.hourly.temperature_2m.length > 0) {
+					                      const latestTemperature = data.hourly.temperature_2m[0];
+										  
+					                      // HTMLのp要素に気温を出力
+					                      const temperatureElement = document.getElementById('temperature');
+					                      temperatureElement.textContent = `現在の気温は${latestTemperature}℃です`; // バッククォートを使用
+										  
+							                  } else {
+							                      console.warn('APIレスポンスに予期せぬデータ形式、または気温データが見つかりませんでした。');
+							                      const temperatureElement = document.getElementById('temperature');
+							                      temperatureElement.textContent = '気温データを取得できませんでした。';
+							                  }
+			                            })
+								
+				             .catch(error => { // エラー発生時の処理
+				                  console.error('データ取得に失敗しました:', error); // エラー内容をコンソールに出力
+				                  const temperatureElement = document.getElementById('temperature');
+				                  temperatureElement.textContent = '気温データの取得中にエラーが発生しました。詳細はコンソールを確認してください。';
+				              });
               
         //-----------------------------------------------------------------------------------------------------------------------
-    
-
 				 	    function ShowAlert() {
 				    	alert("30秒後にシャットダウンします");
-				     }
-				     
-			
-				    				    					 				 
-				    //------------------------------------------------------------------------------------------------------------
-				    
-				   
-				    
-				    
+				     }				     							    				    					 				 
+		//------------------------------------------------------------------------------------------------------------
+				    				   				    				    
 				    // サインインボタンのクリックを処理する。^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 			          function onSignInButtonClick() {
 			        // Googleアカウントでログインするためのポップアップを表示する。
@@ -173,7 +167,7 @@
 			           
 			           
 			           
-				    
+				    /*
 				    //ユーザがサインインしている場合、以下のことを行うために必要なパーミッションを要求するポップアップを表示する。
 			        // アプリを実行し、そうでなければサインインボタンを表示する。
 			        //   ee.data.authenticateViaOauth(
@@ -181,7 +175,8 @@
 			        // 370718729552-snb0afs3vf6hp91jjvgvvh9c7d0gjocl.apps.googleusercontent.com,
 			        // ユーザが既にサインインしている場合に直ちに呼び出されるコールバック。
 			        //   setUpMap,
-			           
+			          */
+					
 			        // 認証エラーをポップアップで表示する。
                        alert,
 			        // アースエンジンのデータの読み取りと計算のみを代行する権限を要求する。
@@ -278,7 +273,7 @@
 						 // PositionCallback　　 -->位置情報の取得が成功したときに呼び出される(引数:Positionオブジェクト)
 						 // PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト)						  						
 						 */
-						      function location () {
+						      function location_arart () {
 								navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //現在位置を取得								
 									function successCallback(position){   //成功した場合
 									
