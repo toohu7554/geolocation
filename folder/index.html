@@ -102,62 +102,7 @@
 					console.log("warn");
 					
 						//<script setup lang="ts">
-					function init_jaxa () {
-						/*
-							import * as je from "@/lib/jaxa.earth.esm.js";
-							import { onMounted, onUpdated, ref } from "vue";
-							import type { Ref } from "vue";
-						
-							const rainFall: Ref<HTMLDivElement | null> = ref(null);
-					*/
-							const dateInput: Ref<string> = ref(
-							  new Date()
-							    .toLocaleDateString("ja-JP", {
-							      year: "numeric",
-							      month: "2-digit",
-							      day: "2-digit",
-							    })
-							    .replaceAll("/", "-") // yyyy-mm-dd
-							);
-							const map: Ref<HTMLCanvasElement | null> = ref(null);
-							
-							const collection =
-							  "https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/NASA.EOSDIS_Terra.MODIS_MOD11C1-LST.daytime.v061_global_half-monthly/collection.json";
-							const bbox = [122, 20, 148, 46];
-							
-							onMounted(() => {
-							  renderMap(new Date(dateInput.value));
-							});
-							onUpdated(() => {
-							  renderMap(new Date(dateInput.value));
-							});
-							
-							const renderMap = async (date: Date) => {
-							  const image = await je.getImage({
-							    // MODISの地表面温度のデータ
-							    collection: collection,
-							    band: "LST",
-							    date,
-							    colorMap: {
-							      min: 273.15 - 5,
-							      max: 273.15 + 35,
-							      colors: "jet",
-							    },
-							    bbox: bbox,
-							    width: 600,
-							    height: 600,
-							    onloading: null,
-							  });
-								
-							  map.value = image.getCanvas();
-							
-							  if (rainFall.value?.firstChild) {
-							       rainFall.value.removeChild(rainFall.value.firstChild);
-							       }
-								
-							  rainFall.value?.appendChild(map.value);
-							};
-					}
+			
 							
 					
 					var canvas = document.getElementById('canvas'); //----------------------------------------------
@@ -277,17 +222,26 @@
 				
 			        
 			         function init() {
-					      //地図を表示するdiv要素のidを設定
-					      var map = L.map('mapcontainer',{      //->地図を作成
-							  
-							  renderer: L.canvas()              //マップ内のすべてのパスにデフォルトでCanvasを使用
-						  });
-					                           
-					      
+					      //地図を表示するdiv要素のidを設定    
+					      var map = L.map('mapcontainer',{ renderer: L.canvas() });
+						 			//->地図を作成 //->マップ内のすべてのパスにデフォルトでCanvasを使用
+						  
+					      //地図の中心とズームレベルを指定                 
+						  map.setView([37.9473, 139.32825], 14); 
+					      				//->「setView」メソッドで経緯度とズームレベルを指定(緯度、経度、ズームレベル)
+
+						 //オーバーレイ用のタイルレイヤ
+						 var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
+      					 var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
+						  var overlayMaps  = {
+							  "色別標高図": gsirelief,
+        					  "陰影起伏図": gsirehillshademap
+						  };
+						  L.control.layers(overlayMaps).addTo(map);
+						  gsi.addTo(map);
 					      //--------------------------------------------------------------------------------------------
-					      //地図の中心とズームレベルを指定
-					      map.setView([37.9473, 139.32825], 14);     
-					             //->「setView」メソッドで経緯度とズームレベルを指定(緯度、経度、ズームレベル)
+					         
+					             
 					      
 					      
 					      
