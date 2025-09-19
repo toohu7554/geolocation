@@ -237,14 +237,12 @@
 							  "色別標高図": gsirelief,
         					  "陰影起伏図": gsirehillshademap
 						  };
+						 
 						  L.control.layers(overlayMaps).addTo(map);
 						  gsi.addTo(map);
-					      //--------------------------------------------------------------------------------------------
-					         
-					             
-					      
-					      
-					      
+					 }//--------------------------------------------------------------------------------------------
+					
+					 function init_tilelayer () {      					             					      					      					      
 					      //表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
 					      L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 					          attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
@@ -280,7 +278,7 @@
 						 // PositionCallback　　 -->位置情報の取得が成功したときに呼び出される(引数:Positionオブジェクト)
 						 // PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト)						  						
 						 */
-						
+						      function location () {
 								navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //現在位置を取得								
 									function successCallback(position){   //成功した場合
 									
@@ -292,12 +290,11 @@
 										document.getElementById("longitude").innerHTML = longitude;
 										document.getElementById("altitude").innerHTML = altitude;
 							              };																					
-							//--------------------------------------------------------------------------
-							
-							        function errorCallback(error){
+							//取得出来なかった場合--------------------------------------------------------------------------
+									function errorCallback(error){
 										alert("位置情報が取得できませんでした");
 						             };
-			            
+							  }
 						
 			       </script>
 																        			             			      			     																							           
