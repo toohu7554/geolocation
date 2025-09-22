@@ -110,15 +110,15 @@
 						 //オーバーレイ用のタイルレイヤ
 						 var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
       					 var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
+						
 						  var overlayMaps  = {
 							  "色別標高図": gsirelief,
         					  "陰影起伏図": gsirehillshademap
-						  };
-						 
-						  L.control.layers('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',{
-							  attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"						
-					      })gsi.addTo(map);
-					 }//--------------------------------------------------------------------------------------------
+						  };						
+						  L.control.layers(overlayMaps).addTo(map);													  
+					      gsi.addTo(map);
+					 }
+					//--------------------------------------------------------------------------------------------
 					console.log("start");
 					console.log("warn");
 		//-----------------------------------------------------------------------------------------------------------------------
