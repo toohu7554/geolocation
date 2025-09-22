@@ -98,6 +98,27 @@
                 </main>
         														 				
 				<script>
+					function init() {
+					      //地図を表示するdiv要素のidを設定    
+					      var map = L.map('mapcontainer',{ renderer: L.canvas() });
+						 			//->地図を作成 //->マップ内のすべてのパスにデフォルトでCanvasを使用
+						  
+					      //地図の中心とズームレベルを指定                 
+						  map.setView([37.9473, 139.32825], 14); 
+					      				//->「setView」メソッドで経緯度とズームレベルを指定(緯度、経度、ズームレベル)
+
+						 //オーバーレイ用のタイルレイヤ
+						 var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
+      					 var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
+						  var overlayMaps  = {
+							  "色別標高図": gsirelief,
+        					  "陰影起伏図": gsirehillshademap
+						  };
+						 
+						  L.control.layers('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',{
+							  attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"						
+					      })gsi.addTo(map);
+					 }//--------------------------------------------------------------------------------------------
 					console.log("start");
 					console.log("warn");
 		//-----------------------------------------------------------------------------------------------------------------------
@@ -155,26 +176,7 @@
               
         
 				    				   				    				    																			        
-			         function init() {
-					      //地図を表示するdiv要素のidを設定    
-					      var map = L.map('mapcontainer',{ renderer: L.canvas() });
-						 			//->地図を作成 //->マップ内のすべてのパスにデフォルトでCanvasを使用
-						  
-					      //地図の中心とズームレベルを指定                 
-						  map.setView([37.9473, 139.32825], 14); 
-					      				//->「setView」メソッドで経緯度とズームレベルを指定(緯度、経度、ズームレベル)
-
-						 //オーバーレイ用のタイルレイヤ
-						 var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
-      					 var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
-						  var overlayMaps  = {
-							  "色別標高図": gsirelief,
-        					  "陰影起伏図": gsirehillshademap
-						  };
-						 
-						  L.control.layers(overlayMaps).addTo(map);
-						  gsi.addTo(map);
-					 }//--------------------------------------------------------------------------------------------
+			         
 					
 					 function init_tilelayer () {      					             					      					      					      
 					      //表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
