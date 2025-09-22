@@ -59,7 +59,7 @@
 				
 		           <button type="button" onclick="ShowAlert()">ここをクリック</button>
 				   <button type="image" onclick="onSignInButtonClick()">ここをクリック</button>			
-					<!--<body onload="init()">-->
+					
 
 						
 					<div> <!--div始まり ----------------------------------------------------------->
@@ -71,7 +71,11 @@
 		            		<p>経度：<span id="longitude">???</span><span>度</span></p>
 		            		<p>高度：<span id="altitude">???</span><span>度</span></p>		            
 		        		</div>
-
+						
+							<div id "map"></div>
+							<div id="map_canvas1" style="width:300px; height:300px"></div>	
+						</div>
+			
 					<template>
   						<div id="rain_fall" ref="rainFall">
     						<canvas ref="map" />
@@ -121,6 +125,8 @@
 					//--------------------------------------------------------------------------------------------
 					console.log("start");
 					console.log("warn");
+
+					
 		//-----------------------------------------------------------------------------------------------------------------------
 				 	    function ShowAlert() {
 				    	alert("30秒後にシャットダウンします");
@@ -205,9 +211,8 @@
 			            //-----------------------------------------------------------------------------------------------------
 			            
 			            
-					function location_arart () { 
-								/*                           
-						  //https://qiita.com/orangecarol/items/c84efeca519e2d97bb34						  
+				  			https://qiita.com/orangecarol/items/c84efeca519e2d97bb34	
+								/*                           										  
 						 「*メゾット」
 						  //getCurrentPosition() -->デバイスの現在位置を取得する
 						  //watchPosition()      -->デバイスの位置情報を監視する
@@ -225,13 +230,12 @@
 											
 											document.getElementById("latitude").innerHTML = latitude;
 											document.getElementById("longitude").innerHTML = longitude;
-											document.getElementById("altitude").innerHTML = altitude;};																					
+											document.getElementById("altitude").innerHTML = altitude;
+									};																					
 							                                            //取得出来なかった場合--------------------------------------------------------------------------
 									function errorCallback(error){
 										alert("位置情報が取得できませんでした");
-						             };
-							  }
-						
+						             };							  						
 			       </script>
 																        			             			      			     																							           
 		</body>
