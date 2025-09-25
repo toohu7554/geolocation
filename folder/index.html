@@ -9,7 +9,12 @@
 	<script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
 	<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> 
     
-	<script src ="https://data.earth.jaxa.jp/api/javascript/v1.2.2/jaxa.earth.umd.js"></script>				
+	<script src ="https://data.earth.jaxa.jp/api/javascript/v1.2.2/jaxa.earth.umd.js"></script>	
+
+    <script src="https://unpkg.com/georaster"></script>
+    <script src="https://unpkg.com/georaster-layer-for-leaflet"></script>
+		
+		
 		
 					   <style>	     
 				           *{
@@ -131,7 +136,34 @@
 				    	alert("30秒後にシャットダウンします");
 				     }				     							    				    					 				 
 		//------------------------------------------------------------------------------------------------------------
-																				
+
+						var parse_georaster = require("georaster");
+						var GeoRasterLayer = require("georaster-layer-for-leaflet");
+
+						// initalize leaflet map
+						var map = L.map('map').setView([0, 0], 5);
+
+						var url_to_geotiff_file = "example_4326.tif";
+					
+					fetch(url_to_geotiff_file)
+  						.then(response => response.arrayBuffer())
+  						.then(arrayBuffer => {
+    					parse_georaster(arrayBuffer).then(georaster => {
+      						console.log("georaster:", georaster);
+
+      					var layer = new GeoRasterLayer({
+          					georaster: georaster,
+          					opacity: 0.7,
+         					pixelValuesToColorFn: values => values[0] > 100 ? '#ff0000' : '#0000ff',
+         				    resolution: 64 // optional parameter for adjusting display resolution
+                         });
+      						layer.addTo(map);
+							
+							map.fitBounds(layer.getBounds());
+
+  							});
+						});
+					
 					//var c = canvas.getContext('2d'); 
 					//const image = document.getElementById("/js/station/om5ru80000003j6y-img/q2k4vk000001680b.png");
 					//---------------------------------------------------------------------------------------------
