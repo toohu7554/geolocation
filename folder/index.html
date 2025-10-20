@@ -148,7 +148,7 @@
 																	//
 																	//N01-07L-2K-13_Road.json
 						    // GeoJSONレイヤーを追加
-						    <!--let my_geo_json_layer = L.geoJSON(my_geo_json, 
+						    let my_geo_json_layer = L.geoJSON(my_geo_json, 
 								{
 						        onEachFeature: function (feature, layer) {
 						            if (feature.properties && feature.properties.name)
@@ -158,7 +158,7 @@
 										 							
 								}		
                                  }).addTo(map);
--->
+					
 							 let road_layer = L.geoJSON(road_feature, 
 								 {
 							        style: function (feature) {
