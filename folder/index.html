@@ -136,13 +136,8 @@
 				    	alert("30秒後にシャットダウンします");
 				     }				     							    				    					 				 
 		//jaxaapi+leaflet------------------------------------------------------------------------------------------------------------
-
-					async function fetchGeoJson(filename) 
-					{
-					    let response = await fetch(filename);
-					    return await response.json();
-					}
-
+<!--async function fetchGeoJson(filename) { let response = await fetch(filename); return await response.json(); }-->
+	
 						async function add_layer() 
 						{
 						    let my_geo_json = await fetchGeoJson("my_geojson_data.json");
