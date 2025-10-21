@@ -112,40 +112,7 @@
 				 	    function ShowAlert() {
 				    	alert("30秒後にシャットダウンします");
 				     }				     							    				    					 				 
-		//jaxaapi+leaflet------------------------------------------------------------------------------------------------------------
-                    <!--async function fetchGeoJson(filename) { let response = await fetch(filename); return await response.json(); }-->	
-						async function add_layer() 
-						{
-						    //let my_geo_json = await fetchGeoJson("my_geojson_data.json");							
-							// 道路を追加 //N01-07L-2K-13_Road.jsonは国土数値情報から取得した道路データ
-						    //let road_feature = await fetchGeoJson("catalog.json"); 
-																	//collection.json
-																	//
-																	//N01-07L-2K-13_Road.json
-						    // GeoJSONレイヤーを追加
-							/*
-						    let my_geo_json_layer = L.geoJSON(my_geo_json, 
-								{
-						        onEachFeature: function (feature, layer) {
-						            if (feature.properties && feature.properties.name)
-									{
-						                layer.bindPopup(feature.properties.name);
-						            }										 							
-								}		
-                                 }).addTo(map);	*/				
-							 let road_layer = L.geoJSON(road_feature, 
-								 {
-							        style: function (feature) {
-							            return {color: "#ff00ff"};
-							        }
-							    }).addTo(map);													
-								my_geo_json_layer_group = L.layerGroup([my_geo_json_layer]);
-							    layerControl.addOverlay(my_geo_json_layer_group, "点／線／面")							
-								// 道路を追加
- 								road_layer_group = L.layerGroup([road_layer]);
-							    layerControl.addOverlay(road_layer_group, "道路")							
-								}
-								 add_layer();		    
+	    
 							    													
 //--------------------------------------------------------------------------------------------------------------------									
 						// initalize leaflet map
