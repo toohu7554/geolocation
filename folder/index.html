@@ -148,10 +148,11 @@
 									function errorCallback(error){
 										alert("位置情報が取得できませんでした");
 						             };							
-					
+
+					(async function(){
 					const collection ="https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/NASA.EOSDIS_Terra.MODIS_MOD11C1-LST.daytime.v061_global_half-monthly/collection.json";
 					const bbox = [122,20,148,46];        			
-					const image =  je.getImage({
+					const image = await je.getImage({
 						     // MODISの地表面温度のデータ
 						    collection: collection,
 						    band: "LST",
