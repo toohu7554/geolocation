@@ -186,6 +186,19 @@
 				　　　　　marker: false
 				　　});
 					mymap.addControl( controlSearch );
+					var data = [
+				      {"loc":[35.7101, 139.8107], "title":"タイトル1", "description":"説明１"},
+				      {"loc":[35.7121, 139.8207], "title":"タイトル2", "description":"説明２"},
+				      {"loc":[35.7091, 139.8207], "title":"タイトル3", "description":"説明３"}
+				    　];
+					     for(i in data) {
+					      loc = data[i].loc,
+					      marker = new L.Marker(new L.latLng(loc), {title: title} );
+					      marker.bindPopup('title: '+ title );
+					      searchLayer.addLayer(marker);
+					    }
+
+
 					
 					L.control.layers(overlayMaps,earthMaps).addTo(map);													  
 					gsi.addTo(map);
