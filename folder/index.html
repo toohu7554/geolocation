@@ -123,7 +123,7 @@
 				function successCallback(position){   //成功した場合									
 					var latitude = position.coords.latitude;  //現在位置情報(緯度)を持つCoordinatesオブジェクトを取得する
 					var longitude = position.coords.longitude;//現在位置情報(経度)を持つCoordinatesオブジェクトを取得する				
-					var longitude = position.coords.altitude; //現在位置情報(高度)を持つCoordinatesオブジェクトを取得する
+					var altitude = position.coords.altitude; //現在位置情報(高度)を持つCoordinatesオブジェクトを取得する
 					
 					document.getElementById("latitude").innerHTML = latitude;
 					document.getElementById("longitude").innerHTML = longitude;
