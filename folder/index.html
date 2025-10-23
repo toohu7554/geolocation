@@ -121,8 +121,7 @@
 						 「*メゾット」
 						  //getCurrentPosition() -->デバイスの現在位置を取得する
 						  //watchPosition()      -->デバイスの位置情報を監視する
-						 // clearWatch()         -->watchPosition()メソッドで取得中のデバイスの監視状況をクリアする
-						  
+						 // clearWatch()         -->watchPosition()メソッドで取得中のデバイスの監視状況をクリアする						  
 						 //「コールバック関数」
 						 // PositionCallback　　 -->位置情報の取得が成功したときに呼び出される(引数:Positionオブジェクト)
 						 // PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト) */						  									
@@ -141,10 +140,10 @@
 					alert("位置情報が取得できませんでした");
 			};							  						
 //Leaflet_Main-------------------------------------------------------------------------------------------------------			      					             					      					      					    
-					//表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
+					<!--//表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
 					L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 					attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
-					}).addTo(map); //				
+					}).addTo(map); //	-->			
 				//検索バー追加
 				var searchLayer = new.L.LayerGroup();
 				map.addLayer(searchLayer);
@@ -203,7 +202,6 @@
 				onloading: null,
 				});
 				//image.getCanvas();
-
 //動作確認--------------------------------------------------------------------------------------------
 			console.log("start");
 			console.log("warn");
