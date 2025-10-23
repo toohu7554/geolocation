@@ -177,6 +177,16 @@
 					"衛星画像1": gsiaa,
 					"衛星画像2": gsibb
 					};	  
+
+					var controlSearch = new L.Control.Search({
+				　　　　position:'topright',
+				　　　　layer: searchLayer,
+				　　　　initial: false,
+				　　　　zoom: 15,
+				　　　　　marker: false
+				　　});
+					mymap.addControl( controlSearch );
+					
 					L.control.layers(overlayMaps,earthMaps).addTo(map);													  
 					gsi.addTo(map);
 				}										            
