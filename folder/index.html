@@ -149,9 +149,6 @@
 					//->地図を作成 //->マップ内のすべてのパスにデフォルトでCanvasを使用						  
 					//地図の中心とズームレベルを指定                 
 					map.setView([37.9473, 139.32825], 14); 
-					//検索バー追加
-					var searchLayer = new.L.LayerGroup();
-					map.addLayer(searchLayer);
 					//->「setView」メソッドで経緯度とズームレベルを指定(緯度、経度、ズームレベル)
 					var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', { attribution: gsiattr });
 					var gsipale = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', { attribution: gsiattr });
@@ -178,25 +175,7 @@
 					"衛星画像2": gsibb
 					};	  
 
-					var controlSearch = new L.Control.Search({
-				　　　　position:'topright',
-				　　　　layer: searchLayer,
-				　　　　initial: false,
-				　　　　zoom: 15,
-				　　　　　marker: false
-				　　});
-					mymap.addControl( controlSearch );
-					var data = [
-				      {"loc":[35.7101, 139.8107], "title":"タイトル1", "description":"説明１"},
-				      {"loc":[35.7121, 139.8207], "title":"タイトル2", "description":"説明２"},
-				      {"loc":[35.7091, 139.8207], "title":"タイトル3", "description":"説明３"}
-				    　];
-					     for(i in data) {
-					      loc = data[i].loc,
-					      marker = new L.Marker(new L.latLng(loc), {title: title} );
-					      marker.bindPopup('title: '+ title );
-					      searchLayer.addLayer(marker);
-					    }
+					
 
 
 					
