@@ -149,7 +149,7 @@
 				var searchLayer = new.L.LayerGroup();
 				map.addLayer(searchLayer);
 				
-				function init() {
+				//function init() {
 					//地図を表示するdiv要素のidを設定    
 					var map = L.map('mapcontainer',{ renderer: L.canvas() });
 					//->地図を作成 //->マップ内のすべてのパスにデフォルトでCanvasを使用						  
@@ -182,7 +182,7 @@
 					};	  
 					L.control.layers(overlayMaps,earthMaps).addTo(map);													  
 					gsi.addTo(map);
-				}										            
+				//}										            
 //---------------------------------------------------------------------------------------------------
 				
 				const collection ="https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/NASA.EOSDIS_Terra.MODIS_MOD11C1-LST.daytime.v061_global_half-monthly/collection.json";
