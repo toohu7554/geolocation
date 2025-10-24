@@ -56,7 +56,8 @@
 		<button type="button" onclick="ShowAlert()">ここをクリック</button>
 		<button type="image" onclick="onSignInButtonClick()">ここをクリック</button>						 
 		<div> <!--div始まり ----------------------------------------------------------->
-			<div id="mapcontainer" style="width:600px;height:600px"></div>				    							
+			<div id="mapcontainer" style="width:600px;height:600px"></div>
+			<div id="map" style="width:600px;height:600px"></div>	
 			<div class="txt-margin">
 			<p>緯度：<span id="latitude">???</span><span>度</span></p>
 			<p>経度：<span id="longitude">???</span><span>度</span></p>
@@ -256,5 +257,6 @@
 	  		</script>
 		<body onload="init()">
 			<div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+			<div id="map" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
 		</body>
 </html>
