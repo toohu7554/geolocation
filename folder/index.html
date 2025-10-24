@@ -84,7 +84,7 @@
 			<p id="temperature"></p>
 			<p>アカウントにログインしてください:<span id="map-container">???</span><span>確認用</span></p>
 		</main>        														 				
-			<script>
+			<script type="module">
 				//現在の温度を表示---------------------------------------------------------------------------------------------------------
 				const apiUrl = 'https://api.open-meteo.com/v1/forecast?latitude=37.56&longitude=139.19&hourly=temperature_2m&timezone=Asia/Tokyo';							
 				// 非同期でAPIリクエストを送信し、データを取得でき次第画面に表示
@@ -182,9 +182,10 @@
 					
 					L.control.layers(overlayMaps,earthMaps).addTo(map);													  
 					gsi.addTo(map);
-				}										            
+				}
+				
 //---------------------------------------------------------------------------------------------------
-				<script type="module">
+				
 					import * as je from "jaxa.earth.esm.js";
 				const collection ="https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/NASA.EOSDIS_Terra.MODIS_MOD11C1-LST.daytime.v061_global_half-monthly/collection.json";
 				const bbox = [122,20,148,46];        			
