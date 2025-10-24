@@ -145,8 +145,7 @@
 			function errorCallback(error){
 				alert("位置情報が取得できませんでした");
 			};
-			//---------------------------------------------------------------------------------------------------
-			<script src="example1.js" type="module"></script>
+			//---------------------------------------------------------------------------------------------------			
 			(async function(){				
 				//mport * as je from "jaxa.earth.esm.js";
 				const collection ="https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/NASA.EOSDIS_Terra.MODIS_MOD11C1-LST.daytime.v061_global_half-monthly/collection.json";
@@ -251,5 +250,8 @@
 		<body onload="init()">
 		<div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
 		<div id="map" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+			//Leafletのサンプル（EPSG:4326編）。
+			<div id="map"></div>
+			<script src="example1.js" type="module"></script>
 	</body>
 </html>
