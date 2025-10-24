@@ -1,7 +1,7 @@
 
 
 import * as je from "../folder/jaxa.earth.esm.js";
-import { coastline } from "./coastline.js";
+//import { coastline } from "./coastline.js";
 
 const map = L.map("map", {
 	crs: L.CRS.EPSG4326,
@@ -42,6 +42,7 @@ je.leaflet.createLayer({
 	// bilinearResampling: true,
 
 }).addTo(map);
+
 
 
 
