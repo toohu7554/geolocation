@@ -169,6 +169,10 @@
 						colors: "jet",
 					};
 				
+				const canvas = document.getElementById('canvas');
+				const ctx = canvas.getContext('2d');	
+				const imagePath = ('https://www.mhlw.go.jp/content/11600000/001447552.png');
+				
 				const image = je.getImage({
 					// MODISの地表面温度のデータ
 					//collection: collection,
@@ -185,9 +189,22 @@
 		//カラーマップ凡例をcanvas要素として追加(幅500px、高さ30px、文字サイズ10px)
 		//document.main.appendChild(image.getLegend(500, 30, 10));
 		 //const div = document.getElementById("map");
+						image.src = imagePath;				
+				canvas.width = Number(window.innerWidth);
+				canvas.height = Number(canvas.width/2);
+				image.onload = function(){
+						ctx.drawImage(image,0,0,image.width,image.height,0,0,canvas.width,canvas.height);
+				}
 			document.body.appendChild(image.getCanvas());	
 			});
 
+
+				
+		
+			
+
+
+			
 				
 		//データの単位を取得
 		console.log(image);
