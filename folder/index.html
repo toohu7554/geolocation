@@ -157,8 +157,7 @@
 				};
 			}
 			//---------------------------------------------------------------------------------------------------			
-			//(async function()
-			{				
+			(async function(){				
 				//mport * as je from "jaxa.earth.esm.js";
 				const collection ="https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/NASA.EOSDIS_Terra.MODIS_MOD11C1-LST.daytime.v061_global_half-monthly/collection.json";				
 				const bbox = [122,20,148,46];        			
@@ -185,7 +184,9 @@
 		//document.main.appendChild(image.getCanvas());
 		//カラーマップ凡例をcanvas要素として追加(幅500px、高さ30px、文字サイズ10px)
 		//document.main.appendChild(image.getLegend(500, 30, 10));
-		 const div = document.getElementById("map");
+		 //const div = document.getElementById("map");
+			document.body.appendChild(image.getCanvas());	
+			})();
 
 				
 		//データの単位を取得
