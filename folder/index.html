@@ -158,13 +158,13 @@
 				//mport * as je from "jaxa.earth.esm.js";
 				const collection ="https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/NASA.EOSDIS_Terra.MODIS_MOD11C1-LST.daytime.v061_global_half-monthly/collection.json";				
 				const bbox = [122,20,148,46];        			
-				const band: "LST",
-				const date: "2023-03-01",
-				colorMap: {
+				const band = "LST";
+				const date = "2023-03-01";
+				const colorMap = {
 						min: 273.15 - 5,
 						max: 273.15 + 35,
 						colors: "jet",
-					},
+					};
 				
 				const image = await je.getImage({
 					// MODISの地表面温度のデータ
