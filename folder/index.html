@@ -99,59 +99,63 @@
 				alert("30秒後にシャットダウンします");
 			}	
 		//現在の温度を表示---------------------------------------------------------------------------------------------------------
-			const apiUrl = 'https://api.open-meteo.com/v1/forecast?latitude=37.56&longitude=139.19&hourly=temperature_2m&timezone=Asia/Tokyo';							
-			// 非同期でAPIリクエストを送信し、データを取得でき次第画面に表示
-			fetch(apiUrl)
-			.then(response => {
-				if (!response.ok) {
-				// HTTPステータスが200番台以外の場合にエラーをスロー
-				throw new Error(`HTTP error! status: ${response.status}`);
-				}
-			return response.json(); // JSON形式に変換
-			})					              					              					              					              					             								 
-			//【ここにAPIレスポンスからのデータ取得処理を実装】								   
-			.then(data => { // データ取得成功時の処理
-			// APIレスポンスの構造を確認し、データが存在するかチェック
-				if (data && data.hourly && data.hourly.temperature_2m && data.hourly.temperature_2m.length > 0) {
-				const latestTemperature = data.hourly.temperature_2m[0];										  
-				// HTMLのp要素に気温を出力
-				const temperatureElement = document.getElementById('temperature');
-				temperatureElement.textContent = `現在の気温は${latestTemperature}℃です`; // バッククォートを使用										  
-					} else {
-				console.warn('APIレスポンスに予期せぬデータ形式、または気温データが見つかりませんでした。');
-				const temperatureElement = document.getElementById('temperature');
-				temperatureElement.textContent = '気温データを取得できませんでした。';
-				}
-			})								
-			.catch(error => { // エラー発生時の処理
-				console.error('データ取得に失敗しました:', error); // エラー内容をコンソールに出力
-				const temperatureElement = document.getElementById('temperature');
-				temperatureElement.textContent = '気温データの取得中にエラーが発生しました。詳細はコンソールを確認してください。';
-			});
+			{
+				const apiUrl = 'https://api.open-meteo.com/v1/forecast?latitude=37.56&longitude=139.19&hourly=temperature_2m&timezone=Asia/Tokyo';							
+				// 非同期でAPIリクエストを送信し、データを取得でき次第画面に表示
+				fetch(apiUrl)
+				.then(response => {
+						if (!response.ok) {
+							// HTTPステータスが200番台以外の場合にエラーをスロー
+							throw new Error(`HTTP error! status: ${response.status}`);
+						}
+					return response.json(); // JSON形式に変換
+				})					              					              					              					              					             								 
+				//【ここにAPIレスポンスからのデータ取得処理を実装】								   
+				.then(data => { // データ取得成功時の処理
+				// APIレスポンスの構造を確認し、データが存在するかチェック
+					if (data && data.hourly && data.hourly.temperature_2m && data.hourly.temperature_2m.length > 0) {
+							const latestTemperature = data.hourly.temperature_2m[0];										  
+							// HTMLのp要素に気温を出力
+							const temperatureElement = document.getElementById('temperature');
+							temperatureElement.textContent = `現在の気温は${latestTemperature}℃です`; // バッククォートを使用										  
+						} else {
+									console.warn('APIレスポンスに予期せぬデータ形式、または気温データが見つかりませんでした。');
+									const temperatureElement = document.getElementById('temperature');
+									temperatureElement.textContent = '気温データを取得できませんでした。';
+					}
+				})								
+				.catch(error => { // エラー発生時の処理
+					console.error('データ取得に失敗しました:', error); // エラー内容をコンソールに出力
+					const temperatureElement = document.getElementById('temperature');
+					temperatureElement.textContent = '気温データの取得中にエラーが発生しました。詳細はコンソールを確認してください。';
+				});
+			}
 			//現在地を取得-----------------------------------------------------------------------------------------------------
-			//https://qiita.com/orangecarol/items/c84efeca519e2d97bb34	
-			/*                           										  
-									 「*メゾット」
-									  //getCurrentPosition() -->デバイスの現在位置を取得する
-									  //watchPosition()      -->デバイスの位置情報を監視する
-									 // clearWatch()         -->watchPosition()メソッドで取得中のデバイスの監視状況をクリアする						  
-									 //「コールバック関数」
-									 // PositionCallback　　 -->位置情報の取得が成功したときに呼び出される(引数:Positionオブジェクト)
-									 // PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト) */						  									
-			navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //現在位置を取得			
-			function successCallback(position){   //成功した場合									
-				var latitude = position.coords.latitude;  //現在位置情報(緯度)を持つCoordinatesオブジェクトを取得する
-				var longitude = position.coords.longitude;//現在位置情報(経度)を持つCoordinatesオブジェクトを取得する				
-				var altitude = position.coords.altitude; //現在位置情報(高度)を持つCoordinatesオブジェクトを取得する
-				
-				document.getElementById("latitude").innerHTML = latitude;
-				document.getElementById("longitude").innerHTML = longitude;
-				document.getElementById("altitude").innerHTML = altitude;
-			};																					
-			//取得出来なかった場合--------------------------------------------------------------------------
-			function errorCallback(error){
-				alert("位置情報が取得できませんでした");
-			};
+			{
+				//https://qiita.com/orangecarol/items/c84efeca519e2d97bb34	
+				/*                           										  
+										 「*メゾット」
+										  //getCurrentPosition() -->デバイスの現在位置を取得する
+										  //watchPosition()      -->デバイスの位置情報を監視する
+										 // clearWatch()         -->watchPosition()メソッドで取得中のデバイスの監視状況をクリアする						  
+										 //「コールバック関数」
+										 // PositionCallback　　 -->位置情報の取得が成功したときに呼び出される(引数:Positionオブジェクト)
+										 // PositionErrorCallback-->位置情報の取得が失敗したときに呼び出される(引数:PositionErrorオブジェクト) */						  									
+				navigator.geolocation.getCurrentPosition(successCallback, errorCallback); //現在位置を取得			
+				function successCallback(position){   //成功した場合									
+					var latitude = position.coords.latitude;  //現在位置情報(緯度)を持つCoordinatesオブジェクトを取得する
+					var longitude = position.coords.longitude;//現在位置情報(経度)を持つCoordinatesオブジェクトを取得する				
+					var altitude = position.coords.altitude; //現在位置情報(高度)を持つCoordinatesオブジェクトを取得する
+					
+					document.getElementById("latitude").innerHTML = latitude;
+					document.getElementById("longitude").innerHTML = longitude;
+					document.getElementById("altitude").innerHTML = altitude;
+				};																					
+				//取得出来なかった場合--------------------------------------------------------------------------
+				function errorCallback(error){
+					alert("位置情報が取得できませんでした");
+				};
+			}
 			//---------------------------------------------------------------------------------------------------			
 			//(async function()
 			{				
@@ -213,22 +217,24 @@
 			}*/
 			
 			//動作確認--------------------------------------------------------------------------------------------
-			console.log("start");
-			console.log("warn");
-			console.log(je);						     							    				    					 				 			
+			{
+				console.log("start");
+				console.log("warn");
+				console.log(je);
+			}
 			//---------------------------------------------------------------------------------------------																					
-			{//function initAnimation(){
+			{
+				//function initAnimation(){
 				var canvas = document.getElementById('canvas');
-				var ctx = canvas.getContext('2d');
-				
+				var ctx = canvas.getContext('2d');				
 				var imagePath = ('./sample.jpg');
 				var image = new Image();
-				image.src = imagePath;
 				
+				image.src = imagePath;				
 				canvas.width = Number(window.innerWidth);
 				canvas.height = Number(canvas.width/2);
 				image.onload = function(){
-				ctx.drawImage(image,0,0,image.width,image.height,0,0,canvas.width,canvas.height);
+					ctx.drawImage(image,0,0,image.width,image.height,0,0,canvas.width,canvas.height);
 				}
 			}
 			//Leaflet_Main-------------------------------------------------------------------------------------------------------			      					             					      					      					    
