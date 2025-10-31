@@ -174,47 +174,7 @@
 				});
 				image.getCanvas();
 			})();				
-			//Leaflet_Main-------------------------------------------------------------------------------------------------------			      					             					      					      					    
-			//表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
-			//L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-			//attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
-			//}).addTo(map); //								
-			function init() {
-				//地図を表示するdiv要素のidを設定    
-				var map = L.map('mapcontainer',{ renderer: L.canvas() });
-				//->地図を作成 //->マップ内のすべてのパスにデフォルトでCanvasを使用						  
-				//地図の中心とズームレベルを指定                 
-				map.setView([37.9473, 139.32825], 14); 					
-				//->「setView」メソッドで経緯度とズームレベルを指定(緯度、経度、ズームレベル)	
-				var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', { attribution: gsiattr });
-				var gsipale = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', { attribution: gsiattr });
-				var osm = L.tileLayer('http://tile.openstreetmap.jp/{z}/{x}/{y}.png',
-				{ attribution: "<a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors" });								
-				//オーバーレイ用のタイルレイヤ
-				var gsiattr = "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>";
-				var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
-				var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
-				var gsiaa = L.tileLayer('https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS-2.PALSAR-2_FNF.v2.1.0_global_yearly/collection.json', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
-				var gsibb = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
-				
-				var baseMaps = {
-					"地理院地図": gsi,
-					"淡色地図": gsipale,
-					"オープンストリートマップ": osm
-				};
-				var overlayMaps  = {
-					"色別標高図": gsirelief,
-					"陰影起伏図": gsirehillshademap
-				};		
-				var earthMaps    = {
-					"衛星画像1": gsiaa,
-					"衛星画像2": gsibb
-				};	  																				
-				L.control.layers(overlayMaps,earthMaps).addTo(map);													  
-				gsi.addTo(map);
-			}
-			//--------------------------------------------------------------------------------------------------------------------									
-			// initalize leaflet map
+				// initalize leaflet map
 			{
 			var map = L.map('map').setView([0, 0], 5);
 			var url_to_geotiff_file = "example_4326.tif";					
@@ -256,6 +216,47 @@
 				ctx.drawImage(image,0,0,image.width,image.height,0,0,canvas.width,canvas.height);
 				}
 			}
+			//Leaflet_Main-------------------------------------------------------------------------------------------------------			      					             					      					      					    
+			//表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
+			//L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+			//attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
+			//}).addTo(map); //								
+			function init() {
+				//地図を表示するdiv要素のidを設定    
+				var map = L.map('mapcontainer',{ renderer: L.canvas() });
+				//->地図を作成 //->マップ内のすべてのパスにデフォルトでCanvasを使用						  
+				//地図の中心とズームレベルを指定                 
+				map.setView([37.9473, 139.32825], 14); 					
+				//->「setView」メソッドで経緯度とズームレベルを指定(緯度、経度、ズームレベル)	
+				var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', { attribution: gsiattr });
+				var gsipale = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', { attribution: gsiattr });
+				var osm = L.tileLayer('http://tile.openstreetmap.jp/{z}/{x}/{y}.png',
+				{ attribution: "<a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors" });								
+				//オーバーレイ用のタイルレイヤ
+				var gsiattr = "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>";
+				var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
+				var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
+				var gsiaa = L.tileLayer('https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS-2.PALSAR-2_FNF.v2.1.0_global_yearly/collection.json', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
+				var gsibb = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
+				
+				var baseMaps = {
+					"地理院地図": gsi,
+					"淡色地図": gsipale,
+					"オープンストリートマップ": osm
+				};
+				var overlayMaps  = {
+					"色別標高図": gsirelief,
+					"陰影起伏図": gsirehillshademap
+				};		
+				var earthMaps    = {
+					"衛星画像1": gsiaa,
+					"衛星画像2": gsibb
+				};	  																				
+				L.control.layers(overlayMaps,earthMaps).addTo(map);													  
+				gsi.addTo(map);
+			}
+			//--------------------------------------------------------------------------------------------------------------------									
+		
 		</script>
 		<body onload="init()">
 		<div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
