@@ -178,9 +178,9 @@
 				});				
 				//image.getCanvas("mapcontainer");
 		//可視化した画像をcanvas要素として追加
-		document.appendChild(image.getCanvas());
+		document.main.appendChild(image.getCanvas());
 		//カラーマップ凡例をcanvas要素として追加(幅500px、高さ30px、文字サイズ10px)
-		document.appendChild(image.getLegend(500, 30, 10));
+		document.main.appendChild(image.getLegend(500, 30, 10));
 		//データの単位を取得
 		console.log(image.getUnit());
 			})();
