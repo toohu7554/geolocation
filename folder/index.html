@@ -209,8 +209,7 @@
 			{
 				const canvas = document.getElementById('canvas');
 				const ctx = canvas.getContext('2d');	
-				const imagePath = ('https://www.mhlw.go.jp/content/11600000/001447552.png');
-				
+				const imagePath = ('https://www.mhlw.go.jp/content/11600000/001447552.png');				
 				const image = je.getImage({
 					// MODISの地表面温度のデータ
 					//collection: collection,
@@ -221,6 +220,7 @@
 					//height: 600,
 					//onloading: null,
 				});				
+				
 				//image.getCanvas("mapcontainer");
 		//可視化した画像をcanvas要素として追加
 		//document.main.appendChild(image.getCanvas());
@@ -236,8 +236,8 @@
 			document.body.appendChild(image.getCanvas());	
 				//データの単位を取得
 			console.log(image);
-			});
-		}
+			};
+		
 				
 		
 			
