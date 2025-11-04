@@ -60,10 +60,10 @@
 				 <p>緯度：<span id="latitude">???</span><span>度</span></p>
 				 <p>経度：<span id="longitude">???</span><span>度</span></p>
 				 <p>高度：<span id="altitude">???</span><span>度</span></p>		            
-			 </div>						
+			 </div>
+				<p>activemap直下</p>
 			<!--<div id "map"></div>-->
-			<div id "mapid"></div>
-			<div id="map_canvas1" style="width:300px; height:300px"></div>	
+			
 		</div>			
 		<template>
 		<div id="rain_fall" ref="rainFall">
@@ -78,6 +78,8 @@
 		
 		<!-- JAXA Earth API for JavaScript を読み込み（API ドキュメントに従って取得） -->				 	
 		<main>										<!-- canvasその1 -->
+			<div id "mapid"></div>
+			<div id="map_canvas1" style="width:300px; height:300px"></div>	
 			<canvas id="canvas" width="200" height="200"> </canvas> 
 			<canvas  width=100height=100 style="border: solid 5pt orange"> SOMETHING GOES WRONG </canvas>
 
