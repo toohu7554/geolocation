@@ -306,7 +306,7 @@
 					var map = L.map('mapcontainer',{ renderer: L.canvas() });
 					//->地図を作成 //->マップ内のすべてのパスにデフォルトでCanvasを使用						  
 					//地図の中心とズームレベルを指定                 
-					map.setView([37.9473, 139.32825], 14); 					
+					map.setView([37.9473, 139.32825], 5); 					
 					//->「setView」メソッドで経緯度とズームレベルを指定(緯度、経度、ズームレベル)	
 					
 					var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', { attribution: gsiattr });
