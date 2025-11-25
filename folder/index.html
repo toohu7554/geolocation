@@ -358,9 +358,7 @@
 					var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
 					var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
 					var gsiaa = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
-					var gsibb = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
-					var harotirekun = L.tileLayer('https://www.mhlw.go.jp/content/11600000/001447552.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
-					var dsm         =je.leaflet.createLayer({									
+					var gsibb = e.leaflet.createLayer({									
 												L,								
 												collection: "https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS.PRISM_AW3D30.v3.2_global/collection.json",
 												band: "DSM",																	
@@ -370,6 +368,8 @@
 														colors: "jet",
 												},								
 										});
+					var harotirekun = L.tileLayer('https://www.mhlw.go.jp/content/11600000/001447552.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
+					
 					var nas = L.tileLayer('https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/NASA.EOSDIS_Terra.MODIS_MOD11C1-LST.daytime.v061_global_half-monthly/collection.json', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
 					var jax = L.tileLayer('https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS.PRISM_AW3D30.v3.2_global/collection.json',  { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
 						//最小値 //最大値 max: 6000, //最小値～最大値をjet（青～緑～黄～赤の虹色）で塗りつぶします。
@@ -389,11 +389,7 @@
 						"test2"   : nas,
 						"test3"   : jax
 					};
-
-					var expelience = {
-						"DSM":dsm
-					};
-					L.control.layers(overlayMaps,earthMaps,baseMaps, expelience).addTo(map);													  
+					L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map);													  
 					gsi.addTo(map);
 				}
 				//--------------------------------------------------------------------------------------------------------------------									
