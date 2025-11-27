@@ -132,8 +132,8 @@
 				}
 				//現在地を取得-----------------------------------------------------------------------------------------------------
 				{
-					//https://qiita.com/orangecarol/items/c84efeca519e2d97bb34	
-					/*                           										  
+												//https://qiita.com/orangecarol/items/c84efeca519e2d97bb34	
+												/*                           										  
 											 「*メゾット」
 											  //getCurrentPosition() -->デバイスの現在位置を取得する
 											  //watchPosition()      -->デバイスの位置情報を監視する
@@ -247,72 +247,7 @@
 								
 
 					
-	/*
-				{
-					const canvas = document.getElementById('canvas');
-					const ctx = canvas.getContext('2d');	
-					const imagePath = ('https://www.mhlw.go.jp/content/11600000/001447552.png');				
-					const image = je.getImage({
-						// MODISの地表面温度のデータ
-						//collection: collection,
-						  collection,
-						 colorMap,										
-						//bbox: bbox,
-						//width: 600,
-						//height: 600,
-						//onloading: null,
-					});				
-					
-					//image.getCanvas("mapcontainer");
-			//可視化した画像をcanvas要素として追加
-			//document.main.appendChild(image.getCanvas());
-			//カラーマップ凡例をcanvas要素として追加(幅500px、高さ30px、文字サイズ10px)
-			//document.main.appendChild(image.getLegend(500, 30, 10));
-			 //const div = document.getElementById("map");
-							image.src = imagePath;				
-					canvas.width = Number(window.innerWidth);
-					canvas.height = Number(canvas.width/2);
-					image.onload = function(){
-							ctx.drawImage(image,0,0,image.width,image.height,0,0,canvas.width,canvas.height);
-					}
-				document.body.appendChild(image.getCanvas());	
-					//データの単位を取得
-				console.log(image);
-				};
-	*/		
-					
-			
-				
 	
-	
-				
-					
-		
-				//})();
-				/*
-					// initalize leaflet map
-				{
-				var map = L.map('map').setView([0, 0], 5);
-				var url_to_geotiff_file = "example_4326.tif";					
-				fetch(url_to_geotiff_file)
-				.then(response => response.arrayBuffer())
-				.then(arrayBuffer => {
-					parse_georaster(arrayBuffer).then(georaster => {
-					console.log("georaster:", georaster);
-					var layer = new GeoRasterLayer({
-					georaster: georaster,
-					opacity: 0.7,
-					pixelValuesToColorFn: values => values[0] > 100 ? '#ff0000' : '#0000ff',
-					resolution: 64 // optional parameter for adjusting display resolution
-					});
-					layer.addTo(map);							
-					map.fitBounds(layer.getBounds());
-					});
-				});	
-				var canvas = document.getElementById('mapid');
-				var c = canvas.getContext("2d"); 
-				//const image = document.getElementById("/js/station/om5ru80000003j6y-img/q2k4vk000001680b.png");
-				}*/
 				
 				//動作確認--------------------------------------------------------------------------------------------
 				{
@@ -414,6 +349,66 @@
 					L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map);													  
 					gsi.addTo(map);
 				}
+
+			/*
+				{
+					const canvas = document.getElementById('canvas');
+					const ctx = canvas.getContext('2d');	
+					const imagePath = ('https://www.mhlw.go.jp/content/11600000/001447552.png');				
+					const image = je.getImage({
+						// MODISの地表面温度のデータ
+						//collection: collection,
+						  collection,
+						 colorMap,										
+						//bbox: bbox,
+						//width: 600,
+						//height: 600,
+						//onloading: null,
+					});				
+					
+					//image.getCanvas("mapcontainer");
+			//可視化した画像をcanvas要素として追加
+			//document.main.appendChild(image.getCanvas());
+			//カラーマップ凡例をcanvas要素として追加(幅500px、高さ30px、文字サイズ10px)
+			//document.main.appendChild(image.getLegend(500, 30, 10));
+			 //const div = document.getElementById("map");
+							image.src = imagePath;				
+					canvas.width = Number(window.innerWidth);
+					canvas.height = Number(canvas.width/2);
+					image.onload = function(){
+							ctx.drawImage(image,0,0,image.width,image.height,0,0,canvas.width,canvas.height);
+					}
+				document.body.appendChild(image.getCanvas());	
+					//データの単位を取得
+				console.log(image);
+				};
+	*/		
+					
+				//})();
+				/*
+					// initalize leaflet map
+				{
+				var map = L.map('map').setView([0, 0], 5);
+				var url_to_geotiff_file = "example_4326.tif";					
+				fetch(url_to_geotiff_file)
+				.then(response => response.arrayBuffer())
+				.then(arrayBuffer => {
+					parse_georaster(arrayBuffer).then(georaster => {
+					console.log("georaster:", georaster);
+					var layer = new GeoRasterLayer({
+					georaster: georaster,
+					opacity: 0.7,
+					pixelValuesToColorFn: values => values[0] > 100 ? '#ff0000' : '#0000ff',
+					resolution: 64 // optional parameter for adjusting display resolution
+					});
+					layer.addTo(map);							
+					map.fitBounds(layer.getBounds());
+					});
+				});	
+				var canvas = document.getElementById('mapid');
+				var c = canvas.getContext("2d"); 
+				//const image = document.getElementById("/js/station/om5ru80000003j6y-img/q2k4vk000001680b.png");
+				}*/
 				//--------------------------------------------------------------------------------------------------------------------									
 			
 		</script>
