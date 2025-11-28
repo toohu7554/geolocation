@@ -347,7 +347,7 @@
 						"test3:NDVI"   : jax
 					};
 
-					L.tileLayer.on('overlayadd', () => {
+					L.tileLayer('overlayadd', () => {
     					console.log('TileLayerの読み込みが完了しました');
 					});
 					
