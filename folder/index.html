@@ -347,8 +347,8 @@
 						"test3:NDVI"   : jax
 					};
 
-					L.tileLayer('overlayadd', () => {
-    					console.log('TileLayerの読み込みが完了しました');
+					L.tileLayer.on('tileload', function(e) => {
+    					console.log('TileLayerの読み込みが完了しました',e.tile.coords);
 					});
 					
 					L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map);													  
