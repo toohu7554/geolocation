@@ -346,6 +346,11 @@
 						"test2;FNF"   : nas,
 						"test3:NDVI"   : jax
 					};
+
+					tileLayer.on('overlayadd', () => {
+    					console.log('TileLayerの読み込みが完了しました');
+					});
+					
 					L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map);													  
 					gsi.addTo(map);
 				}
