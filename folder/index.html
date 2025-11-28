@@ -292,7 +292,7 @@
 					var gsiattr = "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>";
 					var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
 					var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
-					var gsiaa = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
+					var gsiaa = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { opacity: 1, maxNativeZoom: 15, attribution: gsiattr });
 					var gsibb = je.leaflet.createLayer({									
 												L,								
 												collection: "https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS.PRISM_AW3D30.v3.2_global/collection.json",
@@ -321,7 +321,7 @@
 												}
 										});
 					var jax = je.leaflet.createLayer({
-												opacity: "0.1",
+												opacity: "0.3",
 												L,								
 												collection: "https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.JASMES_GCOM-C.SGLI_standard.L2-NDVI.daytime.v3_japan_8-day/collection.json",
 												band: "NDVI_AVE",																	
