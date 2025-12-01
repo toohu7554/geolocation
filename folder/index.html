@@ -140,7 +140,8 @@
 				var marker;
 				map.on("locationfound", function(location) {
     			if (!marker){
-        			marker = L.userMarker(location.latlng).addTo(map);
+        			//marker = L.userMarker(location.latlng).addTo(map);
+					marker = L.userMarker(location.latlng);
     				}
 				    marker.setLatLng(location.latlng);
 				    marker.setPulsing(true);
@@ -155,7 +156,22 @@
 				    setView: true,
 				    enableHighAccuracy: true
 				});				
-			}	
+			}
+
+			// Geolocation API による現在地取得
+			{
+				function success(e) {
+				  var lat  = e.coords.latitude;
+				  var lng = e.coords.longitude;
+				  mymap.setView([lat, lng], 15);
+				  L.marker([lat,lng]).addTo(mymap).bindPopup('現在地').openPopup();
+				};
+				 
+				function error() {
+				  alert('[Geolocation API]現在地を取得できませんでした。');
+				};
+				navigator.geolocation.getCurrentPosition(success, error);
+			}
 
 
 
@@ -184,7 +200,7 @@
 					};																					
 					//取得出来なかった場合--------------------------------------------------------------------------
 					function errorCallback(error){
-						alert("位置情報が取得できませんでした");
+						alert("[GPS]位置情報が取得できませんでした");
 					};
 				}
 				//---------------------------------------------------------------------------------------------------	
@@ -333,7 +349,7 @@
 						.bindPopup('新発田市役所[ヨリネスしばた]')
 						.openPopup();
 					
-					L.marker([latitude, longitude]).addTo(map)
+					L.marker([lat, lng]).addTo(map)
 						.bindPopup('現在地はココです。')
 						.openPopup();
 
