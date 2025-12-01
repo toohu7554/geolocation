@@ -347,13 +347,9 @@
 						"test2;FNF"   : nas,
 						"test3:NDVI"   : jax
 					};
-					L.geoJSON(latitude, {
-					    style: function (feature) {
-					        return {color: feature.properties.color};
-					    						}
-					}).bindPopup(function (layer) {
-					    return layer.feature.properties.description;
-					}).addTo(map);
+					L.marker([37.9473, 139.32825]).addTo(map)
+						.bindPopup('A pretty CSS popup.<br> Easily customizable.')
+						.openPopup();
 					/*
 					L.tileLayer.on('tileload', function()  {
     					console.log('TileLayerの読み込みが完了しました',tile.coords);
