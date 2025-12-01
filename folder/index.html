@@ -227,7 +227,26 @@
 				})();
 					}
 								
-					
+					  // Geolocation API による現在地取得
+					function setCurLocation(){
+			        if (navigator.geolocation == false){
+			          alert('[Geolocation API]現在地を取得できませんでした。');
+			          return;
+			        }
+				
+				function success(e) {
+				  var lat  = e.coords.latitude;
+				  var lng = e.coords.longitude;
+				  mymap.setView([lat, lng], 15);
+				  L.marker([lat,lng]).addTo(map)
+					  .bindPopup('現在地はココです。')
+					  .openPopup();
+				};
+				 
+				function error() {
+				  alert('[Geolocation API]現在地を取得できませんでした。');
+				};
+				navigator.geolocation.getCurrentPosition(success, error);
 	
 				
 				//動作確認--------------------------------------------------------------------------------------------
@@ -332,26 +351,7 @@
 						.openPopup();
 
 					
-			   // Geolocation API による現在地取得
-					function setCurLocation(){
-			        if (navigator.geolocation == false){
-			          alert('[Geolocation API]現在地を取得できませんでした。');
-			          return;
-			        }
-				
-				function success(e) {
-				  var lat  = e.coords.latitude;
-				  var lng = e.coords.longitude;
-				  mymap.setView([lat, lng], 15);
-				  L.marker([lat,lng]).addTo(map)
-					  .bindPopup('現在地はココです。')
-					  .openPopup();
-				};
-				 
-				function error() {
-				  alert('[Geolocation API]現在地を取得できませんでした。');
-				};
-				navigator.geolocation.getCurrentPosition(success, error);
+			 
 			
 					
 
