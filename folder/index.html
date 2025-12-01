@@ -10,12 +10,15 @@
 		<script src="https://unpkg.com/georaster"></script>
 		<script src="https://unpkg.com/georaster-layer-for-leaflet"></script>
 		<!-- plugin -->
-		<link rel="stylesheet" href="css3/leaflet-search.min.css">
-		<script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js"></script>
+			<link rel="stylesheet" href="css3/leaflet-search.min.css">
+			<script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js"></script>
 		<!-- leaflet プラグインCSS-->
-		<link rel="stylesheet" href="https://unpkg.com/leaflet-switch-basemap@1.0.6/src/L.switchBasemap.css" crossorigin=""/>
+			<link rel="stylesheet" href="https://unpkg.com/leaflet-switch-basemap@1.0.6/src/L.switchBasemap.css" crossorigin=""/>
+		 <!-- Plugin Icon.Pulse -->
+	    	<link rel="stylesheet" href="plugin/L.Icon.Pulse.min.css" >
+	    	<script src="plugin/L.Icon.Pulse.min.js" ></script>
 		<!--coastline -->
-		<link rel="coastline" href="https://github.com/toohu7554/geolocation/blob/main/folder/coastline.js">
+			<link rel="coastline" href="https://github.com/toohu7554/geolocation/blob/main/folder/coastline.js">
 		<style>	     
 			*{
 			margin:0;
@@ -348,7 +351,7 @@
 						"test3:NDVI"   : jax
 					};
 					L.marker([37.9473, 139.32825]).addTo(map)
-						.bindPopup('A pretty CSS popup.<br> Easily customizable.')
+						.bindPopup('新発田市役所[ヨリネスしばた]')
 						.openPopup();
 					/*
 					L.tileLayer.on('tileload', function()  {
@@ -357,6 +360,30 @@
 					*/
 					L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map);													  
 					gsi.addTo(map);
+				} <!--===================================================================================-->
+					
+				{
+						function setCurLocation(){
+						        if (navigator.geolocation == false){
+						          alert('現在地を取得できませんでした。');
+						          return;
+						        }
+						 
+						        function success(e) {
+						          var lat  = e.coords.latitude;
+						          var lng = e.coords.longitude;
+						          mymap.setView([lat, lng], 15);
+						 
+						          var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:'#1199fb'});
+						          L.marker([lat, lng],{icon: pulsingIcon}).addTo(mymap);
+						 
+						        };
+						 
+						        function error() {
+						          alert('現在地を取得できませんでした。');
+						        };						 
+						        navigator.geolocation.getCurrentPosition(success, error);
+						      }
 				}
 
 			/*
