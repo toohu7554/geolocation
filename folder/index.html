@@ -346,6 +346,13 @@
 						"test2;FNF"   : nas,
 						"test3:NDVI"   : jax
 					};
+					.geoJSON(data, {
+					    style: function (feature) {
+					        return {color: feature.properties.color};
+					    						}
+					}).bindPopup(function (layer) {
+					    return layer.feature.properties.description;
+					}).addTo(map);
 					/*
 					L.tileLayer.on('tileload', function()  {
     					console.log('TileLayerの読み込みが完了しました',tile.coords);
