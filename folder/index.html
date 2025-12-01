@@ -158,24 +158,6 @@
 				});				
 			}
 
-			// Geolocation API による現在地取得
-			{
-				function success(e) {
-				  var lat  = e.coords.latitude;
-				  var lng = e.coords.longitude;
-				  mymap.setView([lat, lng], 15);
-				  L.marker([lat,lng]).addTo(mymap).bindPopup('現在地').openPopup();
-				};
-				 
-				function error() {
-				  alert('[Geolocation API]現在地を取得できませんでした。');
-				};
-				navigator.geolocation.getCurrentPosition(success, error);
-			}
-
-
-
-
 			
 				//現在地を取得（GPSによる位置情報を取得出来た場合は上書き交信）-----------------------------------------------------------------------------------------------------
 				{
@@ -348,10 +330,30 @@
 					L.marker([37.9473, 139.32825]).addTo(map)
 						.bindPopup('新発田市役所[ヨリネスしばた]')
 						.openPopup();
+
 					
-					L.marker([lat, lng]).addTo(map)
-						.bindPopup('現在地はココです。')
-						.openPopup();
+			{   // Geolocation API による現在地取得
+					function setCurLocation(){
+			        if (navigator.geolocation == false){
+			          alert('[Geolocation API]現在地を取得できませんでした。');
+			          return;
+			        }
+				
+				function success(e) {
+				  var lat  = e.coords.latitude;
+				  var lng = e.coords.longitude;
+				  mymap.setView([lat, lng], 15);
+				  L.marker([lat,lng]).addTo(map)
+					  .bindPopup('現在地はココです。')
+					  .openPopup();
+				};
+				 
+				function error() {
+				  alert('[Geolocation API]現在地を取得できませんでした。');
+				};
+				navigator.geolocation.getCurrentPosition(success, error);
+			}
+					
 
 					
 					/*
