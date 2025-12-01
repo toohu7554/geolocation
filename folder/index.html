@@ -274,7 +274,8 @@
 				//表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
 				//L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 				//attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
-				//}).addTo(map); //								
+				//}).addTo(map); //
+						{
 				function init() {
 					//地図を表示するdiv要素のidを設定    
 					var map = L.map('mapcontainer',{ renderer: L.canvas() });
@@ -348,14 +349,7 @@
 					};
 					L.marker([37.9473, 139.32825]).addTo(map)
 						.bindPopup('新発田市役所[ヨリネスしばた]')
-						.openPopup();
-
-					
-			 
-			
-					
-
-					
+						.openPopup();								 									
 					/*
 					L.tileLayer.on('tileload', function()  {
     					console.log('TileLayerの読み込みが完了しました',tile.coords);
@@ -364,7 +358,7 @@
 					L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map);													  
 					gsi.addTo(map);
 				} /*===================================================================================*/
-
+					}
 
 	/*
 				(async function(){				
