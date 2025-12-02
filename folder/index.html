@@ -49,7 +49,7 @@
 	<!--  <script> src="https://API"</script>-->
 	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIizo70tgJ67AwMGUBAj3kEivOVfqiwcc"></script> -->		
 	</head>					
-	<body>
+	<body onload="init()">
 		<h1>JavaScript練習中1</h1>
 		<h2>DownLoad</h2><br>
 		<h2>想定している機能</h2>
@@ -60,7 +60,7 @@
 		<button type="button" onclick="ShowAlert()">ここをクリック</button>
 		<button type="image" onclick="onSignInButtonClick()">ここをクリック</button>						 
 		<div> <!--div始まり ----------------------------------------------------------->
-			< <div id="mapcontainer" style="width:600px;height:600px"></div>				    							-->
+			 <div id="mapcontainer" style="width:600px;height:600px"></div>				    							-->
 			 <div id="map" style="width:600px;height:600px"></div>	
 			 <div class="txt-margin">
 				 <p>緯度：<span id="latitude">???</span><span>度</span></p>
@@ -84,10 +84,10 @@
 		
 		<!-- JAXA Earth API for JavaScript を読み込み（API ドキュメントに従って取得） -->				 	
 		<main>										<!-- canvasその1 -->
-			<div id "mapid"></div>
+			<div id="mapid"></div>
 			<div id="map_canvas1" style="width:300px; height:300px"></div>	
 			<canvas id="canvas" width="200" height="200"> </canvas> 
-			<canvas  width=100height=100 style="border: solid 5pt orange"> SOMETHING GOES WRONG </canvas>
+			<canvas width="100" height="100" style="border: solid 5pt orange"> SOMETHING GOES WRONG </canvas>
 
 			<canvas id="stockGraph" width="150" height="150">
   				現在の株価: $3.15 + 0.15
@@ -246,8 +246,9 @@
 				 
 				function error() {
 				  alert('[Geolocation API]現在地を取得できませんでした。');
+					navigator.geolocation.getCurrentPosition(success, error);
 				};
-				navigator.geolocation.getCurrentPosition(success, error);
+				
 	
 				
 				//動作確認--------------------------------------------------------------------------------------------
@@ -476,7 +477,7 @@
 				//--------------------------------------------------------------------------------------------------------------------									
 			
 		</script>
-		<body onload="init()">
+		<!--<body onload="init()">-->
 		<div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
 		<div id="map" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
 			//Leafletのサンプル（EPSG:4326編）。
