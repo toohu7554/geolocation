@@ -338,10 +338,14 @@
 									"地理院地図": gsi,
 									"淡色地図": gsipale,
 									"オープンストリートマップ": osm
+									"色別標高図": gsirelief,
+									"陰影起伏図": gsirehillshademap,
+									"openst": gsiaa,
 								};
 								var overlayMaps  = {
 									"色別標高図": gsirelief,
-									"陰影起伏図": gsirehillshademap
+									"陰影起伏図": gsirehillshademap,
+									"openst": gsiaa,
 								};		
 								var earthMaps    = {
 									"openst": gsiaa,
@@ -358,7 +362,7 @@
 			    					console.log('TileLayerの読み込みが完了しました',tile.coords);
 								});
 								*/
-								L.control.layers(baseMaps,overlayMaps,earthMaps).addTo(map);													  
+								L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map); //2つの引数までしか読み込めない？
 								gsi.addTo(map);
 							} /*===================================================================================*/
 									)();
