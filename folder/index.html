@@ -368,14 +368,15 @@
 							} /*===================================================================================*/
 									)();
 										//<body onload="init()">
-							
-							 	//メゾット addEventListener(イベントタイプ、関数);
-                				a.leaflet-control-layers-toggle.addEventListener("click", 
-                   					 function() {   // 無名関数(名前の無い関数)で関数を実装する方法。
-                            					alert("ボタンがクリックされました。");                     
-                       							}
-               							); 
-						
+								
+								let icon = document.getElementById('leaflet-control-layers-toggle.addEventListener');	
+
+								//メゾット addEventListener(イベントタイプ、関数);
+               					 icon.addEventListener("click", //iconにイベントリスナーを取り付ける。
+                    				function() {   // 無名関数(名前の無い関数)で関数を実装する方法。
+                           					 alert("ボタンがクリックされました。");                     
+                        				}
+               						 ); 
 							
 							//ダウンロード時に初期化する
 								window.addEventListener('renderer', L.canvas());
