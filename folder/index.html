@@ -63,7 +63,9 @@
 		<p>・表示範囲の切り替え｛UI｝方法(スワイプ/マウス操作,[+][-])タブなどを使う)</p>
 		<p>kokoko</p>
 		<button type="button" onclick="ShowAlert()">ここをクリック</button>
-		<button type="image" onclick="onSignInButtonClick()">ここをクリック</button>						 
+		<button type="image" onclick="onSignInButtonClick()">ここをクリック</button>	
+	
+	<template>
 		<div> <!--div始まり ----------------------------------------------------------->
 			 <div id="mapcontainer" style="width:600px;height:600px"></div>				    							-->
 			 <div id="map" style="width:600px;height:600px"></div>	
@@ -73,19 +75,19 @@
 				 <p>高度：<span id="altitude">???</span><span>度</span></p>		            
 			 </div>
 				<p>activemap直下</p>
-			<!--<div id "map"></div>-->
-			
-		</div>			
-		<template>
-			<div id="rain_fall" ref="rainFall">
+			<!--<div id "map"></div>-->			
+		</div>
+		<div id="rain_fall" ref="rainFall">
 				<canvas ref="map" />
-			</div>						
-			<div>
+		</div>						
+		<div>
 				<input type="date" v-model="dateInput" />
-			</div>
-		</template>				            				   						   						   						   						  
+		</div>						            				   						   						   						   						  
 		<!-- Googleでログイン」ボタン、最初は隠れている。-->                                    					      											 	
 		</div> <!--div終わり -------------------------------------------------------------->
+	</template>
+		
+			
 		
 		<!-- JAXA Earth API for JavaScript を読み込み（API ドキュメントに従って取得） -->				 	
 		<main>										<!-- canvasその1 -->
@@ -333,7 +335,7 @@
 										              popup: "いまここ"
 										          },
 										          locateOptions: {
-										            maxZoom: 16
+										            maxZoom: 160
 										          }
 									           }
 											 var lc = L.control.locate(option).addTo(map);
