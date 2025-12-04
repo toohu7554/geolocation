@@ -355,6 +355,21 @@
 							//ダウンロード時に初期化する
 								window.addEventListener('renderer', L.canvas());
 						}
+			
+						{
+								function success(e) {
+								var lat  = e.coords.latitude;
+  								var lng = e.coords.longitude;
+  								mymap.setView([lat, lng], 15);
+  								L.marker([lat,lng]).addTo(map).bindPopup('現在地').openPopup();
+								};
+ 
+								function error() {
+  								alert('現在地を取得できませんでした。');
+								};
+								navigator.geolocation.getCurrentPosition(success, error);
+						 }
+						
 
 	/*
 				(async function(){				
