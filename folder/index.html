@@ -134,7 +134,7 @@
 					}
 																			
 							//現在地を取得（GPSによる位置情報を取得出来た場合は上書き交信）-----------------------------------------------------------------------------------------------------
-					/*{*/
+					{
 															//https://qiita.com/orangecarol/items/c84efeca519e2d97bb34	
 															/*                           										  
 														 「*メゾット」
@@ -158,7 +158,7 @@
 								function errorCallback(error){
 									alert("[GPS]位置情報が取得できませんでした");
 								};														
-				    /* }*/
+				    }
 							//---------------------------------------------------------------------------------------------------	
 								
 				
@@ -308,10 +308,12 @@
 									.bindPopup('新発田市役所[ヨリネスしばた]')
 									.openPopup();
 
+								console.log('問題なし1');
 								L.marker([latitude, longitude]).addTo(map)
 									.bindPopup('P1')
-									.openPopup();	
-
+									.openPopup();
+								
+									console.log('問題なし2');
 								{
 									function success(e) {
 										var lat  = e.coords.latitude;
@@ -319,13 +321,16 @@
 		  								mymap.setView([lat, lng], 15);
 		  								L.marker([lat,lng]).addTo(map).bindPopup('現在地').openPopup();
 										alert('現在地の取得に成功しました。');
+										console.log('現在地の取得に成功しました。');
 									};
 	 
 									function error() {
 		  								alert('現在地を取得できませんでした。');
+										console.log('現在地を取得できませんでした。');
 									};
 									navigator.geolocation.getCurrentPosition(success, error);
 						 		}
+								console.log('問題なし3');
 								
 								L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map); //2つの引数までしか読み込めない？
 								gsi.addTo(map);
