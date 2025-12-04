@@ -311,7 +311,7 @@
 						
 								
 								
-								{
+								
 									function success(e) {
 										var lat  = e.coords.latitude;
 		  								var lng = e.coords.longitude;
@@ -326,7 +326,7 @@
 										console.log('現在地を取得できませんでした。');
 									};
 									navigator.geolocation.getCurrentPosition(success, error);
-						 		}
+						 		
 								console.log('問題なし3');
 								
 								L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map); //2つの引数までしか読み込めない？
