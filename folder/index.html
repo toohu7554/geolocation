@@ -342,7 +342,7 @@
                						 ); */
 
 
-								/ Locate
+								// Locate
 									        var option = {
 										          position: 'topright',
 										          strings: {
@@ -354,7 +354,9 @@
 										          }
 									           }
 											 var lc = L.control.locate(option).addTo(map);
-													
+											 // マップ表示時に現在地を取得
+									       		lc.start();
+							
 								console.log('経度:${latitude}');
 								console.log('緯度:${longitude}');
 							
