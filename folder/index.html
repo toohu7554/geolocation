@@ -183,9 +183,15 @@
 								function errorCallback(error){
 									alert("[GPS]位置情報が取得できませんでした");
 								};
+
+								L.marker([latitude, longitude]).addTo(map)
+									.bindPopup('新発田市役所[ヨリネスしばた]')
+									.openPopup();					
+
+								
 				    }
 							//---------------------------------------------------------------------------------------------------	
-					
+								
 				
 							
 					{
@@ -224,33 +230,7 @@
 								//可視化した結果をHTMLCanvasElementとして取得し、HTML上に追加します。
 								document.body.appendChild(image.getCanvas());	
 							})();
-					 }
-			
-					{							
-								  // Geolocation API による現在地取得
-								function setCurLocation(){
-						        if (navigator.geolocation == false){
-						          alert('[Geolocation API]現在地を取得できませんでした。');
-						          return;
-						        }
-							
-							function success(e) {
-							  var lat  = e.coords.latitude;
-							  var lng = e.coords.longitude;
-							  mymap.setView([lat, lng], 15);
-							  L.marker([lat,lng]).addTo(map)
-								  .bindPopup('現在地はココです。')
-								  .openPopup();
-							};
-							 
-							function error() {
-							  alert('[Geolocation API]現在地を取得できませんでした。');
-								navigator.geolocation.getCurrentPosition(success, error);
-							};
-							
-								}
-					}
-							
+					 }										
 							//動作確認--------------------------------------------------------------------------------------------
 					{
 								console.log("start");
@@ -307,7 +287,7 @@
 																	min: 0,
 																	max: 6000,
 																	//colors: "ic",
-																	  colors: "jet",
+																	colors: "jet",
 															      } 												
 													});
 								var harotirekun = L.tileLayer('https://www.mhlw.go.jp/content/11600000/001447552.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
