@@ -13,11 +13,11 @@
 		<!-- plugin -->
 			<link rel="stylesheet" href="https://github.com/toohu7554/geolocation/blob/main/folder/css3/leaflet-search.min.css">
 			<script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js"></script>
-			<script src="js/L.Control.Locate.min.js"></script>
+			<script src="js/L.Control.Locate.min.js"></script> /*位置表示用*/
 		<!-- leaflet プラグインCSS-->
 			<link rel="stylesheet" href="https://unpkg.com/leaflet-switch-basemap@1.0.6/src/L.switchBasemap.css" crossorigin=""/>
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-			<link rel="stylesheet" href="https://github.com/toohu7554/geolocation/blob/main/folder/css3/L.Control.Locate.min.css" />
+			<link rel="stylesheet" href="https://github.com/toohu7554/geolocation/blob/main/folder/css3/L.Control.Locate.min.css" /> /*位置表示用*/
 		 <!-- Plugin Icon.Pulse -->
 	    	<link rel="stylesheet" href="https://github.com/toohu7554/geolocation/blob/main/folder/css3/L.Icon.Pulse.min.css" >
 	    	<script src="https://github.com/toohu7554/geolocation/blob/main/folder/js/L.Icon.Pulse.min.js" ></script>
@@ -251,7 +251,6 @@
 								var gsipale = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', { attribution: gsiattr });
 								var osm = L.tileLayer('http://tile.openstreetmap.jp/{z}/{x}/{y}.png', { attribution: "<a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors" });								
 
-
 								var gsiattr = "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>"; //引用元表示用
 								//オーバーレイ用のタイルレイヤ								
 								var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
@@ -315,17 +314,15 @@
 									"test3:NDVI"   : jax
 								};
 
-
 								console.log('経度:${latitude}');
 								console.log('緯度:${longitude}');
-								
-								
+																
 								L.marker([37.9473, 139.32825]).addTo(map)
 									.bindPopup('新発田市役所[ヨリネスしばた]')
 									.openPopup();
 								console.log('問題なし1');
 						
-								
+								{
 								// Locate
 									        var option = {
 										          position: 'topright',
@@ -340,46 +337,13 @@
 											 var lc = L.control.locate(option).addTo(map);
 											 // マップ表示時に現在地を取得
 									       		lc.start();
-								
-									
-						 		
-								
-								
+								}
+															 																		
 								L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map); //2つの引数までしか読み込めない？
 								gsi.addTo(map);
 							} /*===================================================================================*/
 									)();
-										//<body onload="init()">
-								
-								//let icon = document.getElementById('leaflet-control-layers-toggle.addEventListener');	
-
-								//メゾット addEventListener(イベントタイプ、関数);
-               					/* leaflet-control-layers-toggle.addEventListener.addEventListener("click", //iconにイベントリスナーを取り付ける。
-                    				function() {   // 無名関数(名前の無い関数)で関数を実装する方法。
-                           					 alert("ボタンがクリックされました。");                     
-                        				}
-               						 ); */
-
-
-								
-							
-								console.log('経度:${latitude}');
-								console.log('緯度:${longitude}');
-							
-							function success(e) {
-										var lat  = e.coords.latitude;
-		  								var lng = e.coords.longitude;
-		  								mymap.setView([lat, lng], 15);
-		  								L.marker([lat,lng]).addTo(map).bindPopup('現在地').openPopup();
-										alert('現在地の取得に成功しました。:after');
-										console.log('現在地の取得に成功しました。:after');
-									};	console.log('問題なし2');
-	 
-									function error() {
-		  								alert('現在地を取得できませんでした。:after');
-										console.log('現在地を取得できませんでした。:after');
-									};console.log('問題なし3');
-									navigator.geolocation.getCurrentPosition(success, error);
+															
 							//ダウンロード時に初期化する
 								window.addEventListener('renderer', L.canvas());
 						}
