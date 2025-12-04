@@ -312,22 +312,9 @@
 								
 								
 								
-									function success(e) {
-										var lat  = e.coords.latitude;
-		  								var lng = e.coords.longitude;
-		  								mymap.setView([lat, lng], 15);
-		  								L.marker([lat,lng]).addTo(map).bindPopup('現在地').openPopup();
-										alert('現在地の取得に成功しました。');
-										console.log('現在地の取得に成功しました。');
-									};	console.log('問題なし2');
-	 
-									function error() {
-		  								alert('現在地を取得できませんでした。');
-										console.log('現在地を取得できませんでした。');
-									};
-									navigator.geolocation.getCurrentPosition(success, error);
+									
 						 		
-								console.log('問題なし3');
+								
 								
 								L.control.layers(overlayMaps,earthMaps,baseMaps).addTo(map); //2つの引数までしか読み込めない？
 								gsi.addTo(map);
@@ -343,7 +330,21 @@
                            					 alert("ボタンがクリックされました。");                     
                         				}
                						 ); */
-							
+
+							function success(e) {
+										var lat  = e.coords.latitude;
+		  								var lng = e.coords.longitude;
+		  								mymap.setView([lat, lng], 15);
+		  								L.marker([lat,lng]).addTo(map).bindPopup('現在地').openPopup();
+										alert('現在地の取得に成功しました。:after');
+										console.log('現在地の取得に成功しました。:after');
+									};	console.log('問題なし2');
+	 
+									function error() {
+		  								alert('現在地を取得できませんでした。:after');
+										console.log('現在地を取得できませんでした。:after');
+									};console.log('問題なし3');
+									navigator.geolocation.getCurrentPosition(success, error);
 							//ダウンロード時に初期化する
 								window.addEventListener('renderer', L.canvas());
 						}
