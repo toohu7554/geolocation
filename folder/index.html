@@ -340,7 +340,21 @@
                            					 alert("ボタンがクリックされました。");                     
                         				}
                						 ); */
-							
+
+
+								/ Locate
+									        var option = {
+										          position: 'topright',
+										          strings: {
+										              title: "現在地を表示",
+										              popup: "いまここ"
+										          },
+										          locateOptions: {
+										            maxZoom: 16
+										          }
+									           }
+											 var lc = L.control.locate(option).addTo(map);
+													
 								console.log('経度:${latitude}');
 								console.log('緯度:${longitude}');
 							
