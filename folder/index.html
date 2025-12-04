@@ -135,7 +135,7 @@
 			
 							//現在地を取得(ブラウザによる)
 					{
-							var map = L.map('map-container');
+							var map = L.map('mapcontainer');
 							var marker;
 							map.on("locationfound", function(location) {
 			    			if (!marker){
@@ -185,7 +185,7 @@
 								};
 
 								L.marker([latitude, longitude]).addTo(map)
-									.bindPopup('新発田市役所[ヨリネスしばた]')
+									.bindPopup('p')
 									.openPopup();					
 
 								
