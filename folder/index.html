@@ -153,6 +153,9 @@
 									document.getElementById("latitude").innerHTML = latitude;
 									document.getElementById("longitude").innerHTML = longitude;
 									document.getElementById("altitude").innerHTML = altitude;
+									
+									console.log('経度:${latitude}');
+									console.log('緯度:${longitude}');
 								};																					
 								//取得出来なかった場合--------------------------------------------------------------------------
 								function errorCallback(error){
@@ -226,7 +229,8 @@
 							//L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 							//attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>タイルレイヤ：地理院タイル</a>"
 							//}).addTo(map); //
-			
+									console.log('経度:${latitude}');
+									console.log('緯度:${longitude}');
 						{														
 							//function init() {
 							(async function(){
@@ -336,7 +340,10 @@
                            					 alert("ボタンがクリックされました。");                     
                         				}
                						 ); */
-
+							
+								console.log('経度:${latitude}');
+								console.log('緯度:${longitude}');
+							
 							function success(e) {
 										var lat  = e.coords.latitude;
 		  								var lng = e.coords.longitude;
