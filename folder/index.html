@@ -307,13 +307,10 @@
 								L.marker([37.9473, 139.32825]).addTo(map)
 									.bindPopup('新発田市役所[ヨリネスしばた]')
 									.openPopup();
-
 								console.log('問題なし1');
-								L.marker([lat, lng]).addTo(map)
-									.bindPopup('P1')
-									.openPopup();
+						
 								
-									console.log('問題なし2');
+								
 								{
 									function success(e) {
 										var lat  = e.coords.latitude;
@@ -322,7 +319,7 @@
 		  								L.marker([lat,lng]).addTo(map).bindPopup('現在地').openPopup();
 										alert('現在地の取得に成功しました。');
 										console.log('現在地の取得に成功しました。');
-									};
+									};	console.log('問題なし2');
 	 
 									function error() {
 		  								alert('現在地を取得できませんでした。');
