@@ -61,13 +61,33 @@
 		</style>						   							  					        
 	<!--  <script> src="https://API"</script>-->
 	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIizo70tgJ67AwMGUBAj3kEivOVfqiwcc"></script> -->		
-	</head>						
+	</head>
+	<body>
 		<h1>JavaScript練習中1</h1>
 		<h2>DownLoad</h2><br>
 		<h2>想定している機能</h2>
 		<p>・HP訪問者の位置情報の取得</p>
 		<p>・初期位置から表示する範囲(ズームレベル,中心地点から半径何kmなど)表示</p>
 		<p>・表示範囲の切り替え｛UI｝方法(スワイプ/マウス操作,[+][-])タブなどを使う)</p>
+		<nav class="side-menu" id="sideMenu">
+            <div class="menu-title"><i class="fa-solid fa-user"></i> <span id="userNameDisplay">ユーザー名</span></div>
+            <a href="index.html"><i class="fa-solid fa-house"></i> ホーム</a>
+            <a href="../zukan/list.html"><i class="fa-solid fa-scroll"></i> ずかん</a>
+            <a href="../camera/index.html"><i class="fa-solid fa-camera"></i> カメラ</a>
+            <a href="../map/folder/index.html"><i class="fa-solid fa-map"></i> マップ</a>
+
+            <div class="menu-divider"></div>
+            <button class="menu-item" id="shareData">
+                <i class="fa-solid fa-share"></i> データを共有/ファイルに保存
+            </button>
+            <button class="menu-item" id="loadData">
+                <i class="fa-solid fa-upload"></i> データをロード
+            </button>
+            <input type="file" id="fileInput" class="file-input" accept=".json">
+            <div class="menu-divider"></div>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> せってい</a>
+            <a href="../help/index.html"><i class="fa-solid fa-circle-question"></i> ヘルプ</a>
+        </nav>
 		<p>kokoko</p>
 		<button type="button" onclick="ShowAlert()">ここをクリック</button>
 		<button type="image" onclick="onSignInButtonClick()">ここをクリック</button>						 
