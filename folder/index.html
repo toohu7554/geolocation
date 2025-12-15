@@ -326,13 +326,14 @@
 															opacity: "0.5",
 															L,								
 															collection: "https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.JASMES_GCOM-C.SGLI_standard.L2-NDVI.daytime.v3_japan_8-day/collection.json",
-															band: "NDVI_AVE",																	
+															band: "NDVI_AVE",
+															attribution: gsibttr,
 															colorMap: {														 		
 																	min: 0, 
 																	max: 1,
 																	colors: "ndvi",																															
 															},
-															// { attribution: gsibttr },
+															// { attribution: gsibttr,
 													});
 									//最小値 //最大値 max: 6000, //最小値～最大値をjet（青～緑～黄～赤の虹色）で塗りつぶします。
 								var baseMaps = {
@@ -344,12 +345,15 @@
 									"openst": gsiaa,
 								};
 								var overlayMaps  = {
+									"地理院地図": gsi,
+									"淡色地図": gsipale,
 									"色別標高図": gsirelief,
 									"陰影起伏図": gsirehillshademap,
 									"openst": gsiaa,
+									"オープンストリートマップ": osm,
 								};		
 								var earthMaps    = {
-									"openst": gsiaa,
+									//"openst": gsiaa,
 									"衛星画像:DSM": gsibb,
 									"harotore"   : harotirekun,
 									"test2;FNF"   : nas,
