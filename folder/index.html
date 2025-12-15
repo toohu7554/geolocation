@@ -292,6 +292,7 @@
 								var osm = L.tileLayer('http://tile.openstreetmap.jp/{z}/{x}/{y}.png', { attribution: "<a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors" });								
 
 								var gsiattr = "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>"; //引用元表示用
+								var gsibttr = "<a JAXA</a>";
 								//オーバーレイ用のタイルレイヤ								
 								var gsirelief = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 15, attribution: gsiattr });
 								var gsirehillshademap = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png', { opacity: 0.5, maxNativeZoom: 16, attribution: gsiattr });
@@ -330,7 +331,8 @@
 																	min: 0, 
 																	max: 6000,
 																	colors: "ndvi",																															
-															}
+															},
+															 { attribution: gsibttr });
 													});
 									//最小値 //最大値 max: 6000, //最小値～最大値をjet（青～緑～黄～赤の虹色）で塗りつぶします。
 								var baseMaps = {
